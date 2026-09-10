@@ -51,10 +51,22 @@ ffmpeg -i in.mp4 -vf "scale='min(960,iw)':-2" -c:v libx264 -crf 30 -preset slow 
        -pix_fmt yuv420p -an -movflags +faststart out.mp4
 ```
 
-Carousel videos autoplay and carry a `poster`. Applied-section videos use
-`preload="none"` with a poster so the page does not download the whole set on first
-load. A carousel mixing portrait and landscape clips takes the extra `mixed-carousel`
-class, which pins tile height and letterboxes with `object-fit: contain`.
+Two loading strategies, and **both matter** — with 41 clips on the page, getting this
+wrong means a ~30 MB first load:
+
+- **Carousel videos** autoplay, so they are lazy-loaded. Mark the element `data-lazy`
+  and put the URL in `<source data-src="...">` rather than `src`. `lazyLoadVideos()`
+  in `static/js/index.js` swaps `data-src` → `src` when the clip scrolls within 300 px
+  of the viewport; the `poster` carries the display until then. It runs *after*
+  `bulmaCarousel.attach` so the slides the carousel clones are picked up too.
+- **Click-to-play videos** use plain `<source src="...">` with `preload="none"` and a
+  poster, which already defers the download.
+
+Every `<img>` carries `loading="lazy" decoding="async"`. Together this keeps the first
+load near 1 MB instead of 29 MB.
+
+A carousel mixing portrait and landscape clips takes the extra `mixed-carousel` class,
+which pins tile height and letterboxes with `object-fit: contain`.
 Poster frames:
 
 ```bash

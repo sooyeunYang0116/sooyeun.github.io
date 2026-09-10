@@ -194,7 +194,7 @@
       </div>
 
       <figure>
-        <img src="./static/images/tidi/overview.jpg" alt="TIDI-GS pipeline overview."/>
+        <img loading="lazy" decoding="async" src="./static/images/tidi/overview.jpg" alt="TIDI-GS pipeline overview."/>
         <figcaption>Per-Gaussian reliability cues &mdash; depth conflict, observation support,
           structure evidence, and local isolation &mdash; accumulate throughout training and fuse into
           a floater-risk score driving rendering, suppression, and cleanup.</figcaption>
@@ -316,33 +316,33 @@
       <h4 class="title is-5" style="margin-top:2rem;">Rendered fly-throughs</h4>
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/db_creepyattic.jpg">
-            <source src="./static/videos/tidi/db_creepyattic.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/db_creepyattic.jpg">
+            <source data-src="./static/videos/tidi/db_creepyattic.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/db_drjohnson.jpg">
-            <source src="./static/videos/tidi/db_drjohnson.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/db_drjohnson.jpg">
+            <source data-src="./static/videos/tidi/db_drjohnson.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/db_playroom.jpg">
-            <source src="./static/videos/tidi/db_playroom.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/db_playroom.jpg">
+            <source data-src="./static/videos/tidi/db_playroom.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/mip360_room.jpg">
-            <source src="./static/videos/tidi/mip360_room.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/mip360_room.jpg">
+            <source data-src="./static/videos/tidi/mip360_room.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/mip360_countyer.jpg">
-            <source src="./static/videos/tidi/mip360_countyer.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/mip360_countyer.jpg">
+            <source data-src="./static/videos/tidi/mip360_countyer.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/tnt_auditorium.jpg">
-            <source src="./static/videos/tidi/tnt_auditorium.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/tnt_auditorium.jpg">
+            <source data-src="./static/videos/tidi/tnt_auditorium.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -353,7 +353,7 @@
 
       <br/>
       <figure>
-        <img src="./static/images/tidi/paper_qualitative.jpg" alt="Qualitative comparison on floater-prone regions."/>
+        <img loading="lazy" decoding="async" src="./static/images/tidi/paper_qualitative.jpg" alt="Qualitative comparison on floater-prone regions."/>
         <figcaption>Crops where floaters are most visible &mdash; ornate ceilings and cluttered
           interiors (Courthouse), low-texture walls (Creepy Attic), reflective countertops (Counter).
           Baselines leave haze-like blobs, smears, and ghosted edges; TIDI-GS removes them while
@@ -362,7 +362,7 @@
 
       <br/>
       <figure>
-        <img src="./static/images/tidi/pointcloud_risk.jpg" alt="Floater risk over the Gaussian point cloud."/>
+        <img loading="lazy" decoding="async" src="./static/images/tidi/pointcloud_risk.jpg" alt="Floater risk over the Gaussian point cloud."/>
         <figcaption>The fused floater-risk score visualized over the Gaussian point cloud. High-risk
           primitives concentrate in free space, away from any supported surface &mdash; the score is
           measuring what it claims to measure.</figcaption>
@@ -439,7 +439,7 @@
       </div>
 
       <figure>
-        <img src="./static/images/projects/fogs_pipeline.png" alt="FOGS two-stage training pipeline."/>
+        <img loading="lazy" decoding="async" src="./static/images/projects/fogs_pipeline.png" alt="FOGS two-stage training pipeline."/>
         <figcaption>Stage I performs semantic cleaning (ray carving, anchor-based correction,
           uncertainty&ndash;opacity coupling); Stage II recovers detail through semantic-guided
           densification and condensation. Blue and orange denote Stage I and II.</figcaption>
@@ -631,7 +631,7 @@
       </div>
 
       <figure>
-        <img src="./static/images/projects/revisit_overview.jpg" alt="ReVisit-GS system overview."/>
+        <img loading="lazy" decoding="async" src="./static/images/projects/revisit_overview.jpg" alt="ReVisit-GS system overview."/>
         <figcaption>One loop, no per-scene tuning. A ghost visible only from a held-out view is scored
           in view space by warping covisible keyframes into a candidate pose; the planner then captures
           at the maximally unstable pose, which is itself the repair.</figcaption>
@@ -679,7 +679,7 @@
       </div>
 
       <figure>
-        <img src="./static/images/projects/revisit_ghost_panel.jpg" alt="Ghost diagnostic panel on a held-out view."/>
+        <img loading="lazy" decoding="async" src="./static/images/projects/revisit_ghost_panel.jpg" alt="Ghost diagnostic panel on a held-out view."/>
         <figcaption>Ghost diagnosis on a held-out view: ground truth, rendering, repaired result, and
           error map. The corruption is collective and view-dependent, which is precisely why
           per-primitive cues cannot rank it.</figcaption>
@@ -738,14 +738,14 @@
       </div>
 
       <figure style="margin-top:1.5rem;">
-        <img src="./static/images/projects/revisit_curves.png" alt="Held-out probe PSNR vs. training iteration across policies and scenes."/>
+        <img loading="lazy" decoding="async" src="./static/images/projects/revisit_curves.png" alt="Held-out probe PSNR vs. training iteration across policies and scenes."/>
         <figcaption>Held-out probe PSNR against training iteration on four scenes across both
           trajectory types. Instability-driven policies separate from coverage and random early and
           hold the gap; GauSS-MI's MI policy trails random on every scene.</figcaption>
       </figure>
 
       <figure style="margin-top:1.5rem;">
-        <img src="./static/images/projects/revisit_qual.jpg" alt="Held-out probe of Dr Johnson after 40 selected views."/>
+        <img loading="lazy" decoding="async" src="./static/images/projects/revisit_qual.jpg" alt="Held-out probe of Dr Johnson after 40 selected views."/>
         <figcaption>Held-out probe of <i>Dr Johnson</i> after 40 selected views: ground truth (left);
           the coverage map, showing a collective ghost at this weakly re-observed pose, 12.5 dB
           (centre); the adaptive V(&sigma;) map, 27.0 dB (right). The mean 1&ndash;2 dB gaps are made
@@ -873,7 +873,7 @@
       </div>
 
       <figure>
-        <img src="./static/images/metric/overview.jpg" alt="METRIC-GS pipeline overview."/>
+        <img loading="lazy" decoding="async" src="./static/images/metric/overview.jpg" alt="METRIC-GS pipeline overview."/>
         <figcaption>A quantile warm start seeds a learnable log-scale trained alongside the 3DGS.
           Visibility gating restricts teacher votes to views that actually see a Gaussian; instance
           size cues (doors 2.03 m, desks 0.74 m, ceilings 2.5 m) update the scale by robust MLE.
@@ -917,7 +917,7 @@
       </div>
 
       <figure style="margin-top:1.5rem;">
-        <img src="./static/images/metric/scannetpp_scale_error.png" alt="Per-scene metric scale error on ScanNet++."/>
+        <img loading="lazy" decoding="async" src="./static/images/metric/scannetpp_scale_error.png" alt="Per-scene metric scale error on ScanNet++."/>
         <figcaption>Per-scene error, sorted by the heuristic. Grey bars connect the heuristic estimate
           to ours; open circles are abstentions, which simply inherit the warm start. The corrections
           are concentrated exactly where the heuristic fails worst.</figcaption>
@@ -936,38 +936,38 @@
 
       <div class="carousel results-carousel mixed-carousel">
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_office.jpg">
-            <source src="./static/videos/metric/office.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_office.jpg">
+            <source data-src="./static/videos/metric/office.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_house_corridor.jpg">
-            <source src="./static/videos/metric/house_corridor.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_house_corridor.jpg">
+            <source data-src="./static/videos/metric/house_corridor.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_apartment_a.jpg">
-            <source src="./static/videos/metric/apartment_a.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_apartment_a.jpg">
+            <source data-src="./static/videos/metric/apartment_a.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_robotics_lab.jpg">
-            <source src="./static/videos/metric/robotics_lab.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_robotics_lab.jpg">
+            <source data-src="./static/videos/metric/robotics_lab.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_show_flat.jpg">
-            <source src="./static/videos/metric/show_flat.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_show_flat.jpg">
+            <source data-src="./static/videos/metric/show_flat.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_home_b_phone.jpg">
-            <source src="./static/videos/metric/home_b_phone.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_home_b_phone.jpg">
+            <source data-src="./static/videos/metric/home_b_phone.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_home_c_photos.jpg">
-            <source src="./static/videos/metric/home_c_photos.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_home_c_photos.jpg">
+            <source data-src="./static/videos/metric/home_c_photos.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -978,7 +978,7 @@
 
       <br/>
       <figure>
-        <img src="./static/images/metric/custom_qual.jpg" alt="Act and abstain decisions on own captures."/>
+        <img loading="lazy" decoding="async" src="./static/images/metric/custom_qual.jpg" alt="Act and abstain decisions on own captures."/>
         <figcaption>The same four captures as still frames with the delivered scale bar. Blue frames
           are scenes the estimator acts on and corrects; grey frames are refusals &mdash; thin inlier
           mass in the show flat, no ceiling cue in the robotics lab.</figcaption>
@@ -1049,14 +1049,14 @@
       <div class="columns">
         <div class="column">
           <figure>
-            <img src="./static/images/projects/disdf_garden.jpg" alt="Garden: ground truth vs. extracted mesh."/>
+            <img loading="lazy" decoding="async" src="./static/images/projects/disdf_garden.jpg" alt="Garden: ground truth vs. extracted mesh."/>
             <figcaption>Garden (Mip-NeRF 360) &mdash; ground truth (left) against the extracted,
               color-baked mesh (right) across three viewpoints.</figcaption>
           </figure>
         </div>
         <div class="column">
           <figure>
-            <img src="./static/images/projects/disdf_truck.jpg" alt="Truck: ground truth vs. extracted mesh."/>
+            <img loading="lazy" decoding="async" src="./static/images/projects/disdf_truck.jpg" alt="Truck: ground truth vs. extracted mesh."/>
             <figcaption>Truck (Tanks and Temples) &mdash; the same comparison. Painted detail survives
               baking, and the support mask keeps the background from hallucinating.</figcaption>
           </figure>
@@ -1141,7 +1141,7 @@
       </div>
 
       <figure>
-        <img src="./static/images/projects/smc_loop.png" alt="Unified per-axis vision control loop."/>
+        <img loading="lazy" decoding="async" src="./static/images/projects/smc_loop.png" alt="Unified per-axis vision control loop."/>
         <figcaption>The unified per-axis loop the claim is tested in. Motion is estimated by ORB + LK,
           split into operator intent and bounded shake, and fed to one of four controllers against a
           saturating actuator whose per-step budget is V<sub>max</sub>&Delta;t &mdash; the term that
@@ -1193,14 +1193,14 @@
       <div class="columns">
         <div class="column">
           <figure>
-            <img src="./static/images/projects/smc_timeseries.png" alt="Recovered camera motion: raw vs. stabilized."/>
+            <img loading="lazy" decoding="async" src="./static/images/projects/smc_timeseries.png" alt="Recovered camera motion: raw vs. stabilized."/>
             <figcaption>Recovered camera motion across all three axes. Raw shake (grey) against LPF,
               PID, and SMC. PID visibly overshoots on &theta; where SMC holds.</figcaption>
           </figure>
         </div>
         <div class="column">
           <figure>
-            <img src="./static/images/projects/smc_surface.png" alt="Sliding surface trajectory with boundary layer."/>
+            <img loading="lazy" decoding="async" src="./static/images/projects/smc_surface.png" alt="Sliding surface trajectory with boundary layer."/>
             <figcaption>The sliding surface s(t) = c&middot;e&#8321; + e&#8322; against the
               &plusmn;&phi; = 2.0 boundary layer. s stays outside the layer in 98.8% of frames at
               k = 10 &mdash; which is exactly why the choice of switching law stops mattering at that
@@ -1646,23 +1646,23 @@
 
       <div class="carousel results-carousel">
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r1_kitchen.jpg">
-            <source src="./static/videos/projects/studio_r1_kitchen.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r1_kitchen.jpg">
+            <source data-src="./static/videos/projects/studio_r1_kitchen.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r1_living.jpg">
-            <source src="./static/videos/projects/studio_r1_living.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r1_living.jpg">
+            <source data-src="./static/videos/projects/studio_r1_living.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r1_room1.jpg">
-            <source src="./static/videos/projects/studio_r1_room1.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r1_room1.jpg">
+            <source data-src="./static/videos/projects/studio_r1_room1.mp4" type="video/mp4">
           </video>
         </div>
         <div class="item">
-          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r2_living.jpg">
-            <source src="./static/videos/projects/studio_r2_living.mp4" type="video/mp4">
+          <video data-lazy autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r2_living.jpg">
+            <source data-src="./static/videos/projects/studio_r2_living.mp4" type="video/mp4">
           </video>
         </div>
       </div>
