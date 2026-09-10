@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Sooyeun Yang — research portfolio: 3D Gaussian Splatting, geometric reliability, active reconstruction, and applied 3D reconstruction systems.">
+  <meta name="keywords" content="Sooyeun Yang, 3D Gaussian Splatting, 3D reconstruction, novel view synthesis, active mapping, SLAM, digital twin, portfolio">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sooyeun Yang — Research Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="#gs">Gaussian Splatting</a>
+      <a class="navbar-item" href="#control">Control &amp; Robotics</a>
+      <a class="navbar-item" href="#applied">Applied</a>
+      <a class="navbar-item" href="#tools">Tools &amp; Evaluation</a>
+      <a class="navbar-item" href="https://github.com/sooyeunYang0116">
+        <span class="icon"><i class="fab fa-github"></i></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Sooyeun Yang</h1>
+          <div class="is-size-5 publication-authors" style="margin-bottom: 0.3rem;">
+            Department of Mechanical Engineering
+          </div>
+          <div class="is-size-5 publication-authors">
+            SUNY Korea &nbsp;&middot;&nbsp; Stony Brook University
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://github.com/sooyeunYang0116"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>GitHub</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="mailto:sooyeun.yang@stonybrook.edu"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-envelope"></i></span>
+                  <span>Email</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+          <div class="content has-text-justified" style="max-width: 730px; margin: 1.5rem auto 0;">
+            <p>
+              I work on <b>3D reconstruction and novel view synthesis</b>, mostly on 3D Gaussian
+              Splatting. The question running through my research is how a reconstruction can know
+              which parts of <i>itself</i> are wrong. Photometric optimization is happy to invent
+              geometry that renders correctly from the training views and falls apart everywhere
+              else, and no amount of PSNR will report this. So I build methods that accumulate
+              evidence about each primitive over time, suppress what cannot be supported without
+              erasing genuine thin structure, and &mdash; most recently &mdash; plan where a camera
+              should look next in order to repair what is already broken.
+            </p>
+            <p>
+              I also build the systems that surround that research: on-device capture applications
+              that run structure-from-motion on the phone while you scan, evaluation metrics designed
+              to catch the artifacts that PSNR ignores, metric-scale estimation that knows when to
+              refuse, and low-VRAM pipelines meant to survive outside a lab, in remote inspection and
+              digital-twin deployments.
+            </p>
+            <p class="is-size-7" style="color:#8a8a8a; text-align:center;">
+              Each project below links to its repository. Most are <b>private</b> while the
+              corresponding paper is under review &mdash; the links are listed so the codebase behind
+              each result is identified, and access can be granted on request.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================ GAUSSIAN SPLATTING ============================ -->
+<section class="section" id="gs">
+  <div class="container is-max-desktop">
+    <p class="section-label">Gaussian Splatting &mdash; Research</p>
+
+    <!-- ============ TIDI-GS ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">TIDI-GS &mdash; Temporal Instability Estimation with Detail-Preserving Importance-Weighting</h3>
+        <span class="chip chip-review">ACCV 2026 · under review</span>
+      </div>
+      <p class="project-role">First author · training framework, experiments, and paper</p>
+
+      <div class="project-links">
+        <a href="https://github.com/sooyeunYang0116/TIDI-GS">
+          <span class="icon is-small"><i class="fab fa-github"></i></span>
+          <span>TIDI-GS</span><span class="lock">private</span>
+        </a>
+      </div>
+
+      <div class="abstract">
+        <div class="abstract-label">Abstract</div>
+        <p>
+          3D Gaussian Splatting (3DGS) renders high-quality novel views in real time, yet purely
+          photometric optimization leaves floaters &mdash; primitives that occupy free space without
+          multi-view geometric support &mdash; most severely in indoor and artifact-prone regions.
+          Prior remedies treat floater removal as a one-shot decision: a threshold on opacity,
+          gradient, or depth error at a single step. We argue that geometric unreliability is better
+          estimated over time. We introduce TIDI-GS (Temporal Instability estimation with
+          Detail-preserving Importance-weighting for Gaussian Splatting), a training-time framework
+          that maintains a per-Gaussian reliability state, accumulating observation support, spatial
+          isolation, structural cues, and monocular depth consistency across training. These weak cues
+          are fused via Noisy-OR and log-odds aggregation into a temporally smoothed floater-risk
+          score, which drives reliability-gated rendering, a targeted suppression loss, and
+          conservative cleanup. Detail-preserving cues protect thin and high-frequency structure,
+          guarding against the over-removal that undermines aggressive pruning. TIDI-GS leaves the
+          3DGS rasterizer unchanged. It achieves the best or competitive perceptual quality (SSIM and
+          LPIPS) while maintaining competitive PSNR, with substantial LPIPS reductions, and its
+          point-budgeted implementation reduces peak VRAM by over 34% on Tanks and Temples.
+        </p>
+      </div>
+
+      <div class="content has-text-justified">
+        <p>
+          3D Gaussian Splatting renders high-quality novel views in real time, but purely photometric
+          optimization leaves <i>floaters</i> &mdash; primitives that occupy free space without
+          multi-view geometric support. They help minimize training-view loss and therefore have no
+          incentive to disappear, yet from a novel viewpoint they read as haze, ghosting, or spurious
+          structure. The problem is worst indoors, where textureless walls and ceilings offer little
+          photometric gradient to anchor Gaussians, and where speculars, cast shadows, transparency,
+          and cluttered occlusion boundaries produce view-dependent appearance the loss cannot
+          separate from stable geometry.
+        </p>
+        <p>
+          Existing remedies almost all share a shape: a <b>one-shot decision</b> &mdash; a threshold on
+          opacity, gradient, or depth error evaluated at a single training step. Opacity pruning cannot
+          tell a floater from a valid thin structure, since both carry low opacity. Pixel-aware gradient
+          control and learned pruning target density or compactness rather than geometric reliability.
+          Coarse-to-fine schedules and image-level depth losses act globally, without ever identifying
+          the specific Gaussians responsible.
+        </p>
+        <p>
+          TIDI-GS argues that geometric unreliability is better <b>estimated over time</b>. Every
+          Gaussian carries a compact persistent state recording how consistently it has been observed,
+          whether its depth agrees with a monocular prior across views, how isolated it is from its
+          neighbors, and whether its local appearance encodes fine geometric detail. These are
+          individually weak cues; fused through <b>Noisy-OR evidence combination</b> and <b>log-odds
+          aggregation</b>, they yield a temporally smoothed floater-risk score. That score then drives
+          three mechanisms at different granularities: reliability-gated rendering, a targeted opacity
+          suppression loss, and conservative late-stage cleanup that physically removes only primitives
+          whose instability has persisted across multiple evidence windows. Detail-preserving cues run
+          in parallel to protect thin and high-frequency geometry &mdash; the failure mode that
+          undermines purely instability-driven pruning.
+        </p>
+        <p>
+          The whole framework operates at training time only. The 3DGS rasterization operator is never
+          modified; at test time the cleaned Gaussian set is rendered with the stock rasterizer.
+        </p>
+      </div>
+
+      <figure>
+        <img src="./static/images/tidi/overview.jpg" alt="TIDI-GS pipeline overview."/>
+        <figcaption>Per-Gaussian reliability cues &mdash; depth conflict, observation support,
+          structure evidence, and local isolation &mdash; accumulate throughout training and fuse into
+          a floater-risk score driving rendering, suppression, and cleanup.</figcaption>
+      </figure>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Results</h4>
+      <div class="content has-text-justified">
+        <p>
+          Against general-purpose Gaussian splatting methods at 30K iterations, TIDI-GS takes the best
+          SSIM and LPIPS on all three benchmarks while keeping PSNR competitive. The LPIPS margins are
+          the substantive ones: floaters occupy few pixels, so they barely move PSNR, but they are
+          perceptually salient, which is exactly what LPIPS measures.
+        </p>
+      </div>
+
+      <div class="table-container">
+        <table class="table is-bordered is-narrow is-fullwidth has-text-centered results-table">
+          <thead>
+            <tr>
+              <th rowspan="2" class="has-text-left">Method</th>
+              <th colspan="4">Tanks and Temples</th>
+              <th colspan="4">Mip-NeRF 360</th>
+              <th colspan="4">Deep Blending</th>
+            </tr>
+            <tr>
+              <th>PSNR&uarr;</th><th>SSIM&uarr;</th><th>LPIPS&darr;</th><th>L1&darr;</th>
+              <th>PSNR&uarr;</th><th>SSIM&uarr;</th><th>LPIPS&darr;</th><th>L1&darr;</th>
+              <th>PSNR&uarr;</th><th>SSIM&uarr;</th><th>LPIPS&darr;</th><th>L1&darr;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="has-text-left">3DGS</td>
+              <td class="r1"><b>26.17</b></td><td class="r2">0.878</td><td class="r3">0.192</td><td class="r1"><b>0.032</b></td>
+              <td class="r2">30.87</td><td class="r2">0.928</td><td class="r2">0.081</td><td class="r2">0.020</td>
+              <td class="r2">34.94</td><td class="r2">0.952</td><td class="r3">0.210</td><td class="r1"><b>0.008</b></td>
+            </tr>
+            <tr>
+              <td class="has-text-left">Mip-Splatting</td>
+              <td>24.63</td><td>0.779</td><td>0.268</td><td>0.072</td>
+              <td class="r3">30.64</td><td class="r3">0.901</td><td>0.176</td><td class="r2">0.020</td>
+              <td>32.14</td><td>0.937</td><td>0.243</td><td>0.013</td>
+            </tr>
+            <tr>
+              <td class="has-text-left">2DGS</td>
+              <td>23.37</td><td>0.812</td><td>0.298</td><td>0.045</td>
+              <td>28.53</td><td>0.863</td><td>0.220</td><td>0.027</td>
+              <td>31.15</td><td>0.933</td><td>0.271</td><td>0.013</td>
+            </tr>
+            <tr>
+              <td class="has-text-left">Pixel-GS</td>
+              <td class="r3">25.55</td><td class="r3">0.849</td><td>0.246</td><td class="r3">0.034</td>
+              <td>30.25</td><td>0.894</td><td>0.174</td><td class="r3">0.023</td>
+              <td class="r3">34.08</td><td class="r3">0.948</td><td>0.233</td><td class="r2">0.010</td>
+            </tr>
+            <tr>
+              <td class="has-text-left">LP-3DGS</td>
+              <td>25.45</td><td>0.845</td><td class="r2">0.173</td><td class="r2">0.033</td>
+              <td>29.56</td><td>0.886</td><td class="r3">0.096</td><td>0.024</td>
+              <td class="r3">34.55</td><td>0.946</td><td class="r2">0.141</td><td class="r3">0.011</td>
+            </tr>
+            <tr>
+              <td class="has-text-left"><b>TIDI-GS (Ours)</b></td>
+              <td class="r2">26.05</td><td class="r1"><b>0.885</b></td><td class="r1"><b>0.095</b></td><td class="r3">0.034</td>
+              <td class="r1"><b>31.47</b></td><td class="r1"><b>0.940</b></td><td class="r1"><b>0.072</b></td><td class="r1"><b>0.019</b></td>
+              <td class="r1"><b>35.28</b></td><td class="r1"><b>0.957</b></td><td class="r1"><b>0.049</b></td><td class="r2">0.010</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="columns" style="margin-top:1.5rem;">
+        <div class="column is-half">
+          <p class="is-size-6" style="font-weight:600; margin-bottom:0.6rem;">Resource use (Tanks and Temples, 30K it.)</p>
+          <table class="table is-bordered is-narrow is-fullwidth has-text-centered results-table">
+            <thead>
+              <tr><th class="has-text-left">Method</th><th>VRAM</th><th>#Gauss</th><th>FPS</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="has-text-left">3DGS</td><td>14.5 GiB</td><td>527K</td><td>142</td></tr>
+              <tr><td class="has-text-left">LP-3DGS</td><td>14.2 GiB</td><td>557K</td><td>138</td></tr>
+              <tr><td class="has-text-left"><b>TIDI-GS</b></td><td><b>9.5 GiB</b></td><td><b>426K</b></td><td><b>156</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="column is-half">
+          <p class="is-size-6" style="font-weight:600; margin-bottom:0.6rem;">External floater metrics (Creepy Attic)</p>
+          <table class="table is-bordered is-narrow is-fullwidth has-text-centered results-table">
+            <thead>
+              <tr><th class="has-text-left">Variant</th><th>Depth Reproj.&darr;</th><th>Free-Space Opacity&darr;</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="has-text-left"><b>Full model</b></td><td><b>0.018</b></td><td><b>0.023</b></td></tr>
+              <tr><td class="has-text-left">No cleanup</td><td>0.031</td><td>0.041</td></tr>
+              <tr><td class="has-text-left">No structure evidence</td><td>0.047</td><td>0.089</td></tr>
+              <tr><td class="has-text-left">No depth state</td><td>0.038</td><td>0.052</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="content has-text-justified">
+        <p>
+          The ablation separates cleanly into two regimes. <b>Cleanup trades LPIPS at nearly constant
+          PSNR:</b> the no-cleanup variant is the only one whose PSNR matches the full model
+          (35.93 vs. 35.94 dB) yet its LPIPS is more than three times worse (0.064 vs. 0.020). A
+          three-seed repetition confirms the PSNR equivalence sits well inside seed noise
+          (0.03 dB against &asymp;1.1 dB seed std) while the LPIPS spread (&le;0.005) is an order of
+          magnitude below the 0.044 gap. <b>Structure evidence is essential:</b> removing it costs
+          5.9 dB PSNR and pushes LPIPS to 0.179 &mdash; the single most destructive ablation, because
+          valid thin structures get misclassified and over-suppressed. Two external metrics computed
+          independently of any internal state &mdash; multi-view depth reprojection error and
+          free-space opacity &mdash; rank the full model best on both, and rank the
+          no-structure-evidence variant worst despite its aggressive cleanup, exactly as over-removal
+          would predict.
+        </p>
+      </div>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Rendered fly-throughs</h4>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/db_creepyattic.jpg">
+            <source src="./static/videos/tidi/db_creepyattic.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/db_drjohnson.jpg">
+            <source src="./static/videos/tidi/db_drjohnson.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/db_playroom.jpg">
+            <source src="./static/videos/tidi/db_playroom.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/mip360_room.jpg">
+            <source src="./static/videos/tidi/mip360_room.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/mip360_countyer.jpg">
+            <source src="./static/videos/tidi/mip360_countyer.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/tnt_auditorium.jpg">
+            <source src="./static/videos/tidi/tnt_auditorium.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <p class="is-size-7 has-text-centered" style="margin-top: 0.6rem; color: #888;">
+        Deep Blending (Creepy Attic, Dr Johnson, Playroom), Mip-NeRF 360 (Room, Counter),
+        Tanks and Temples (Auditorium).
+      </p>
+
+      <br/>
+      <figure>
+        <img src="./static/images/tidi/paper_qualitative.jpg" alt="Qualitative comparison on floater-prone regions."/>
+        <figcaption>Crops where floaters are most visible &mdash; ornate ceilings and cluttered
+          interiors (Courthouse), low-texture walls (Creepy Attic), reflective countertops (Counter).
+          Baselines leave haze-like blobs, smears, and ghosted edges; TIDI-GS removes them while
+          ceiling patterns stay sharp and textureless surfaces stay free of fog.</figcaption>
+      </figure>
+
+      <br/>
+      <figure>
+        <img src="./static/images/tidi/pointcloud_risk.jpg" alt="Floater risk over the Gaussian point cloud."/>
+        <figcaption>The fused floater-risk score visualized over the Gaussian point cloud. High-risk
+          primitives concentrate in free space, away from any supported surface &mdash; the score is
+          measuring what it claims to measure.</figcaption>
+      </figure>
+    </div>
+
+
+    <!-- ============ FOGS ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">FOGS &mdash; Feature-Oriented Gaussian Splatting</h3>
+        <span class="chip chip-review">ECCV 2026 · rebuttal stage</span>
+      </div>
+      <p class="project-role">First author · method, implementation, experiments, rebuttal</p>
+
+      <div class="project-links">
+        <a href="https://github.com/sooyeunYang0116/SEGGS">
+          <span class="icon is-small"><i class="fab fa-github"></i></span>
+          <span>SEGGS &mdash; FOGS codebase</span><span class="lock">private</span>
+        </a>
+      </div>
+
+      <div class="abstract">
+        <div class="abstract-label">Abstract</div>
+        <p>
+          3D Gaussian Splatting enables efficient novel view synthesis, yet it often produces floaters
+          that reduce photometric error while lacking stable surface support. These artifacts degrade
+          view consistency and compromise the geometric reliability of the representation. We propose
+          FOGS, a feature-to-geometry training framework that uses a semantic teacher to regulate
+          Gaussian density during optimization. Rather than applying per-view semantic losses, FOGS
+          maintains a compact and persistent semantic state for each Gaussian by fusing multi-view
+          teacher predictions with entropy-based confidence. This state drives three operators.
+          Semantic ray carving penalizes near-depth density that contributes to teacher-background
+          pixels. Semantic gravity forms high-confidence anchors to relocate supported uncertain
+          density and suppress unsupported blobs. Uncertainty&ndash;opacity coupling discourages
+          persistently uncertain Gaussians from becoming visually influential even when the photometric
+          objective can be satisfied. A fog-to-surface condensation step sharpens locally supported fog
+          by shrinking covariance and rebalancing opacity. FOGS is computationally efficient and adds
+          minimal overhead by storing only a compact per-Gaussian state and reusing standard 3DGS
+          rendering weights.
+        </p>
+      </div>
+
+      <div class="content has-text-justified">
+        <p>
+          Where TIDI-GS reasons about geometry, FOGS asks whether <b>semantics</b> can regulate
+          Gaussian density. The premise is that a segmentation network already knows a great deal about
+          what should and should not be solid &mdash; sky is not a surface, and density accumulating in
+          front of a wall is suspicious regardless of how well it fits the training pixels.
+        </p>
+        <p>
+          The usual way to use that knowledge is a per-view semantic loss, which throws the information
+          away and re-derives it every iteration. FOGS instead fuses a frozen segmentation teacher into
+          a <b>compact, persistent per-Gaussian semantic state</b> (CSF), combining multi-view teacher
+          predictions weighted by entropy-based confidence. Because the state accumulates, it becomes a
+          stable estimate of semantic support and uncertainty rather than a per-frame opinion.
+        </p>
+        <p>
+          That state drives three operators. <b>Semantic ray carving</b> penalizes near-depth density
+          that contributes to teacher-background pixels &mdash; density where the teacher is confident
+          nothing should be. <b>Semantic gravity</b> forms high-confidence anchors and relocates
+          supported-but-uncertain density toward them while suppressing unsupported blobs, so density
+          is moved rather than merely deleted. <b>Uncertainty&ndash;opacity coupling</b> prevents
+          persistently uncertain Gaussians from becoming visually influential even when the photometric
+          objective would happily let them. A final <b>fog-to-surface condensation</b> step sharpens
+          locally supported fog by shrinking covariance and rebalancing opacity, recovering detail that
+          the cleaning stage would otherwise leave soft.
+        </p>
+        <p>
+          The design is deliberately cheap: only a compact per-Gaussian state is stored, and standard
+          3DGS rendering weights are reused rather than recomputed, so training is <i>faster</i> than
+          vanilla 3DGS in every scene measured.
+        </p>
+      </div>
+
+      <figure>
+        <img src="./static/images/projects/fogs_pipeline.png" alt="FOGS two-stage training pipeline."/>
+        <figcaption>Stage I performs semantic cleaning (ray carving, anchor-based correction,
+          uncertainty&ndash;opacity coupling); Stage II recovers detail through semantic-guided
+          densification and condensation. Blue and orange denote Stage I and II.</figcaption>
+      </figure>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Results</h4>
+      <div class="content has-text-justified">
+        <p>
+          On Tanks and Temples, FOGS achieves the highest PSNR on all four scenes and the best SSIM in
+          most, with the largest margin on Palace (+7.7 dB over the strongest baseline) &mdash; a scene
+          with wide baselines and heavy occlusion where unsupported density accumulates freely. It does
+          so while training faster than 3DGS on every scene.
+        </p>
+      </div>
+
+      <div class="table-container">
+        <table class="table is-bordered is-narrow is-fullwidth has-text-centered results-table">
+          <thead>
+            <tr>
+              <th rowspan="2" class="has-text-left">Method</th>
+              <th colspan="3">Auditorium</th>
+              <th colspan="3">Museum</th>
+              <th colspan="3">Palace</th>
+              <th colspan="3">Temple</th>
+            </tr>
+            <tr>
+              <th>PSNR&uarr;</th><th>SSIM&uarr;</th><th>LPIPS&darr;</th>
+              <th>PSNR&uarr;</th><th>SSIM&uarr;</th><th>LPIPS&darr;</th>
+              <th>PSNR&uarr;</th><th>SSIM&uarr;</th><th>LPIPS&darr;</th>
+              <th>PSNR&uarr;</th><th>SSIM&uarr;</th><th>LPIPS&darr;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="has-text-left">DeSplat</td>
+              <td>23.13</td><td>0.865</td><td class="r1"><b>0.146</b></td>
+              <td>20.64</td><td>0.807</td><td class="r2">0.108</td>
+              <td>19.15</td><td>0.733</td><td class="r2">0.253</td>
+              <td>20.72</td><td class="r2">0.818</td><td class="r1"><b>0.155</b></td>
+            </tr>
+            <tr>
+              <td class="has-text-left">AbsGS</td>
+              <td class="r2">24.64</td><td class="r2">0.883</td><td class="r2">0.168</td>
+              <td class="r2">22.40</td><td class="r1"><b>0.841</b></td><td>0.167</td>
+              <td class="r2">19.78</td><td class="r3">0.759</td><td>0.286</td>
+              <td>18.34</td><td>0.744</td><td>0.288</td>
+            </tr>
+            <tr>
+              <td class="has-text-left">Pixel-GS</td>
+              <td class="r3">24.38</td><td class="r3">0.882</td><td class="r2">0.168</td>
+              <td class="r3">22.05</td><td class="r2">0.834</td><td>0.175</td>
+              <td class="r3">19.77</td><td class="r2">0.768</td><td>0.292</td>
+              <td>18.57</td><td>0.778</td><td class="r2">0.266</td>
+            </tr>
+            <tr>
+              <td class="has-text-left">CleanGS</td>
+              <td>15.17</td><td>0.553</td><td>0.392</td>
+              <td>9.52</td><td>0.233</td><td>0.569</td>
+              <td>7.33</td><td>0.332</td><td>0.528</td>
+              <td>7.65</td><td>0.483</td><td>0.439</td>
+            </tr>
+            <tr>
+              <td class="has-text-left">3DGS</td>
+              <td>24.13</td><td>0.871</td><td class="r3">0.193</td>
+              <td>20.92</td><td>0.764</td><td class="r3">0.160</td>
+              <td>19.63</td><td>0.736</td><td class="r3">0.350</td>
+              <td class="r2">20.85</td><td class="r3">0.806</td><td class="r3">0.222</td>
+            </tr>
+            <tr>
+              <td class="has-text-left"><b>FOGS (Ours)</b></td>
+              <td class="r1"><b>27.13</b></td><td class="r1"><b>0.913</b></td><td>0.203</td>
+              <td class="r1"><b>25.62</b></td><td class="r3">0.826</td><td class="r1"><b>0.083</b></td>
+              <td class="r1"><b>27.46</b></td><td class="r1"><b>0.910</b></td><td class="r1"><b>0.128</b></td>
+              <td class="r1"><b>24.55</b></td><td class="r1"><b>0.821</b></td><td>0.284</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="is-size-6" style="font-weight:600; margin: 1.5rem 0 0.6rem;">Training time, Tanks and Temples</p>
+      <div class="table-container">
+        <table class="table is-bordered is-narrow is-fullwidth has-text-centered results-table">
+          <thead>
+            <tr><th class="has-text-left">Method</th><th>Auditorium</th><th>Museum</th><th>Palace</th><th>Temple</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="has-text-left">DeSplat</td><td>15m 53s</td><td>14m 50s</td><td>9m 51s</td><td>16m 36s</td></tr>
+            <tr><td class="has-text-left">AbsGS</td><td>14m 34s</td><td>35m 23s</td><td>15m 33s</td><td>18m 11s</td></tr>
+            <tr><td class="has-text-left">Pixel-GS</td><td>23m 53s</td><td>44m 24s</td><td>21m 52s</td><td>26m 57s</td></tr>
+            <tr><td class="has-text-left">3DGS</td><td>10m 54s</td><td>20m 55s</td><td>11m 21s</td><td>10m 56s</td></tr>
+            <tr><td class="has-text-left"><b>FOGS (Ours)</b></td><td><b>9m 25s</b></td><td><b>16m 25s</b></td><td><b>10m 8s</b></td><td><b>9m 51s</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="title is-5" style="margin-top:2rem;">3DGS vs. FOGS on real interiors</h4>
+      <div class="content has-text-justified">
+        <p>
+          Fly-throughs from the ECCV supplementary, rendered from the same captures and the same
+          camera paths under both methods. These are residential interiors &mdash; the regime the
+          method was built for, and the one where unsupported density is most visible: haze across
+          ceilings, fog hanging in front of white walls, and smeared structure around window frames
+          and glossy floors.
+        </p>
+      </div>
+
+      <div class="columns">
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/fogs_r1_kitchen_3dgs.jpg">
+            <source src="./static/videos/fogs/r1_kitchen_3dgs.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">Kitchen &mdash; 3DGS baseline</p>
+        </div>
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/fogs_r1_kitchen_fogs.jpg">
+            <source src="./static/videos/fogs/r1_kitchen_fogs.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">Kitchen &mdash; <b>FOGS</b></p>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/fogs_r2_living_3dgs.jpg">
+            <source src="./static/videos/fogs/r2_living_3dgs.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">Living room &mdash; 3DGS baseline</p>
+        </div>
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/fogs_r2_living_fogs.jpg">
+            <source src="./static/videos/fogs/r2_living_fogs.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">Living room &mdash; <b>FOGS</b></p>
+        </div>
+      </div>
+
+      <ul class="keyfacts">
+        <li>On Mip-NeRF 360, FOGS achieves the <b>lowest LPIPS on both Garden and Room</b> while
+            remaining competitive in PSNR and SSIM &mdash; and trains in roughly half the time of 3DGS
+            (13m 9s vs. 28m 58s on Garden, 10m 35s vs. 22m 23s on Room).</li>
+        <li>Separates two failure classes explicitly: floaters that <i>render</i> as surface without
+            support, and negative-space floaters sitting in teacher-background regions.</li>
+        <li>CleanGS collapses on this benchmark (PSNR 7.3&ndash;15.2), which the paper reads as a
+            compression-oriented method pushed outside its intended operating regime rather than as a
+            like-for-like quality comparison.</li>
+        <li>Direct ancestor of the SEGGS experiment line; the persistent per-primitive state idea
+            developed here is what carries into TIDI-GS.</li>
+      </ul>
+    </div>
+
+
+    <!-- ============ ReVisit-GS ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">ReVisit-GS &mdash; Virtual-View Instability for Active Re-Observation and Repair</h3>
+        <span class="chip chip-review">ICRA 2027 · submitted</span>
+      </div>
+      <p class="project-role">First author · problem analysis, method, offline campaign and closed-loop simulation</p>
+
+      <div class="project-links">
+        <a href="https://github.com/sooyeunYang0116/ReVisitGS">
+          <span class="icon is-small"><i class="fab fa-github"></i></span>
+          <span>ReVisitGS</span><span class="lock">private</span>
+        </a>
+      </div>
+
+      <div class="abstract">
+        <div class="abstract-label">Abstract</div>
+        <p>
+          Active reconstruction planners ask where the map is incomplete; we show they must also ask
+          where it is wrong. On indoor 3D Gaussian Splatting (3DGS) maps the dominant novel-view
+          corruption is a collective, view-dependent ghost: near-surface structure that overfits
+          speculars, renders plausibly from every training view, and is invisible in principle to
+          per-primitive signals. The photometric reliability driving a state-of-the-art planner misses
+          83&ndash;95% of harmful primitives across five model&ndash;scene combinations and is actively
+          repelled from the regions that need re-observation. Because the failure is collective and
+          view-dependent, it is measurable only in view space. From this analysis we derive a GT-free
+          virtual-view instability score V(&sigma;), warp-consistency uncertainty re-engineered for a
+          robotic mapping loop, and show that since repair does not propagate spatially, capturing at
+          arg&nbsp;max&nbsp;V(&sigma;) is itself the repair mechanism, unifying exploration and repair
+          in one objective. A single trajectory-adaptive policy, with no per-scene tuning, outperforms
+          coverage, random, FisherRF, and GauSS-MI schedules across six real indoor scenes (four held
+          out from all design decisions) and five closed-loop simulated worlds, one driven by an
+          independent ray-traced renderer; its advantage survives 2&deg; of pose error and a hard robot
+          motion budget, at 6.7&times; lower scoring cost, reaching coverage's final quality with up to
+          29% fewer views. We close with an oracle repair bound and a negative result: GT-free
+          per-primitive ghost identification remains open.
+        </p>
+      </div>
+
+      <figure>
+        <img src="./static/images/projects/revisit_overview.jpg" alt="ReVisit-GS system overview."/>
+        <figcaption>One loop, no per-scene tuning. A ghost visible only from a held-out view is scored
+          in view space by warping covisible keyframes into a candidate pose; the planner then captures
+          at the maximally unstable pose, which is itself the repair.</figcaption>
+      </figure>
+
+      <div class="content has-text-justified">
+        <p>
+          Active reconstruction plans toward what has not yet been seen. This project argues that is
+          only half the job: a planner also has to know where the map has been <b>built wrong</b>, and
+          go back. The two are not the same signal, and conflating them is why coverage-driven policies
+          plateau.
+        </p>
+        <p>
+          The work opens with an analysis that is largely a sequence of negative results, and those
+          negative results are the contribution. First, the closest competitor is structurally blind to
+          the problem: <b>GauSS-MI</b>'s inverse sensor model only produces "unreliable" evidence when
+          pixel loss exceeds &asymp;0.59, so on a converged map just <b>38 of 2.8M Gaussians</b> ever
+          receive negative evidence. Its miss rate on genuinely harmful primitives is <b>88&ndash;95%</b>,
+          and because the harmful set's median reliability is 0.976&ndash;0.999 its information gain is
+          &asymp;0 &mdash; the planner <i>actively avoids</i> re-observing corrupted regions.
+        </p>
+        <p>
+          Second, the dominant indoor corruption is not what the floater literature assumes. It is not
+          free-space floaters but <b>view-dependent ghosts</b>: collective, near-surface, wispy
+          structures that overfit speculars and reflections. Nine static per-Gaussian cues were tested
+          and all sit near chance (AUC 0.44&ndash;0.65); an uncertainty EMA even correlates
+          <i>negatively</i> (&minus;0.23), because ghosts look confident. Harmfulness turns out to be a
+          collective, viewpoint-dependent property, not something any single primitive carries.
+        </p>
+        <p>
+          That motivates measuring risk in <b>view space</b> instead. The proposed GT-free virtual-view
+          instability signal V(&sigma;) &mdash; built from covisibility neighbors, an occlusion z-test,
+          and a verifiability channel &mdash; predicts actual novel-view error at
+          <b>Spearman 0.63</b>, against 0.33 for GauSS-MI's mutual information on the same map and
+          poses.
+        </p>
+        <p>
+          A third negative result shapes the final method. Repair does <b>not propagate spatially</b>:
+          capturing eight neighboring frames around a ghost view is exactly as useless as capturing
+          distant views (&minus;0.05 either way). To fix a broken viewpoint you must capture <i>that</i>
+          viewpoint. Next-best-view selection and repair therefore collapse into a single mechanism
+          rather than two subsystems, which is the cleanest argument in the paper for why a coverage
+          policy cannot fix ghosts even in principle.
+        </p>
+      </div>
+
+      <figure>
+        <img src="./static/images/projects/revisit_ghost_panel.jpg" alt="Ghost diagnostic panel on a held-out view."/>
+        <figcaption>Ghost diagnosis on a held-out view: ground truth, rendering, repaired result, and
+          error map. The corruption is collective and view-dependent, which is precisely why
+          per-primitive cues cannot rank it.</figcaption>
+      </figure>
+
+      <div class="columns" style="margin-top:1.2rem;">
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/revisit_ghost_orbit.jpg">
+            <source src="./static/videos/revisit/ghost_orbit.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">Orbiting the ghost: the full map (left) against the same map with the
+            oracle harmful set removed (right). The corruption only exists off the capture path.</p>
+        </div>
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/revisit_ghost_repair.jpg">
+            <source src="./static/videos/revisit/ghost_repair.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">The oracle repair upper bound at held-out view 22 &mdash;
+            <b>+1.03 dB</b> from removing primitives no per-primitive cue can identify.</p>
+        </div>
+      </div>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Incremental active mapping</h4>
+      <div class="content has-text-justified">
+        <p>
+          The offline campaign compares policies on held-out probe PSNR across two trajectory
+          geometries. An unexpected finding is that the right way to <i>aggregate</i> instability
+          depends on scene geometry: min-over-many wins on orbital trajectories, mean-over-few-covisible
+          wins on walkthroughs. This is real rather than noise &mdash; so the deployed policy is
+          adaptive, discriminating trajectory type online from the convergence of the forward-axis
+          centroid (0.852 for orbital vs. 0.253 for walkthrough &mdash; a clean separation) and freezing
+          the choice after 16 views.
+        </p>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <table class="table is-bordered is-narrow is-fullwidth has-text-centered results-table">
+            <thead>
+              <tr>
+                <th class="has-text-left">Policy</th>
+                <th>Dr Johnson (walkthrough)</th>
+                <th>Room (orbital)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="has-text-left"><b>adaptive V(&sigma;) — deployed</b></td><td><b>22.5&ndash;23.2</b></td><td><b>27.9&ndash;28.6</b></td></tr>
+              <tr><td class="has-text-left">V-mean covisibility (ours)</td><td><b>23.23 &plusmn; 0.23</b> (n=5)</td><td>26.5&ndash;27.0</td></tr>
+              <tr><td class="has-text-left">V-min k8 (WarpRF Eq. 9)</td><td>21.94</td><td><b>27.82 &plusmn; 0.27</b> (n=5)</td></tr>
+              <tr><td class="has-text-left">coverage</td><td>20.92</td><td>26.92 &plusmn; 0.43</td></tr>
+              <tr><td class="has-text-left">random</td><td>20.78</td><td>26.46</td></tr>
+              <tr><td class="has-text-left">GauSS-MI (MI policy)</td><td>20.33 &plusmn; 0.87 (n=3)</td><td>24.52 &plusmn; 0.43 (n=3)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <figure style="margin-top:1.5rem;">
+        <img src="./static/images/projects/revisit_curves.png" alt="Held-out probe PSNR vs. training iteration across policies and scenes."/>
+        <figcaption>Held-out probe PSNR against training iteration on four scenes across both
+          trajectory types. Instability-driven policies separate from coverage and random early and
+          hold the gap; GauSS-MI's MI policy trails random on every scene.</figcaption>
+      </figure>
+
+      <figure style="margin-top:1.5rem;">
+        <img src="./static/images/projects/revisit_qual.jpg" alt="Held-out probe of Dr Johnson after 40 selected views."/>
+        <figcaption>Held-out probe of <i>Dr Johnson</i> after 40 selected views: ground truth (left);
+          the coverage map, showing a collective ghost at this weakly re-observed pose, 12.5 dB
+          (centre); the adaptive V(&sigma;) map, 27.0 dB (right). The mean 1&ndash;2 dB gaps are made
+          of failures like this one, not of uniform blur.</figcaption>
+      </figure>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Policies side by side, and in closed loop</h4>
+      <div class="content has-text-justified">
+        <p>
+          The same office scene planned by the adaptive V(&sigma;) policy and by a coverage schedule,
+          both at 60 views. Beyond the offline campaign, the policy also runs closed-loop in Isaac Sim,
+          where the planner drives an actual robot under a motion budget rather than teleporting to
+          arbitrary poses.
+        </p>
+      </div>
+
+      <div class="columns">
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/revisit_office_adaptive.jpg">
+            <source src="./static/videos/revisit/office_adaptive.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">Office &mdash; <b>adaptive V(&sigma;) + guard (ours)</b>, 60 views</p>
+        </div>
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/revisit_office_coverage.jpg">
+            <source src="./static/videos/revisit/office_coverage.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">Office &mdash; coverage schedule, 60 views</p>
+        </div>
+      </div>
+
+      <br/>
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/revisit_closed_loop_room.jpg">
+        <source src="./static/videos/revisit/closed_loop_room.mp4" type="video/mp4">
+      </video>
+      <p class="video-label">Closed-loop active mapping in Isaac Sim &mdash; adaptive V(&sigma;),
+        coverage, and random planning the same world side by side, with the selected pose and probe
+        PSNR updating as each map is built.</p>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Submission video</h4>
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/revisit_overview_video.jpg">
+        <source src="./static/videos/revisit/overview_video.mp4" type="video/mp4">
+      </video>
+      <p class="video-label">The full ICRA 2027 submission video: the blind spot, the signal, the
+        policy, and the closed-loop robot runs.</p>
+
+      <ul class="keyfacts">
+        <li>Instability policies beat coverage and random by <b>+1.0 to +2.6 dB</b> across both scenes.</li>
+        <li>The enhanced walkthrough scoring beats the published WarpRF formulation by <b>+1.6 dB</b>
+            (23.50 vs. 21.94).</li>
+        <li><b>GauSS-MI never beats random</b> on either scene &mdash; &minus;1.9 dB on Room &mdash;
+            which is the blind-spot argument demonstrated at the policy level, not just the signal
+            level.</li>
+        <li>Run-to-run variance is tracked honestly: CUDA non-determinism in the rasterizer's atomicAdd
+            perturbs densification, so true run spread is &asymp;&plusmn;0.4 dB and the 3-seed std of
+            &plusmn;0.2 understates it. Policy gaps of 1.0&ndash;2.6 dB are robust against that.</li>
+        <li>Open limitation stated rather than hidden: GT-free <i>per-primitive</i> detection remains
+            unsolved at ~3% precision, so per-primitive evidence is used only as a conservative prior.</li>
+      </ul>
+    </div>
+
+
+    <!-- ============ METRIC-GS ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">METRIC-GS &mdash; Selective Metric-Scale Estimation for 3D Gaussian Splatting</h3>
+        <span class="chip chip-review">WACV 2027 Applications Track · under review</span>
+      </div>
+      <p class="project-role">First author · method, benchmark campaign, own-capture study, paper</p>
+
+      <div class="project-links">
+        <a href="https://github.com/sooyeunYang0116/METRIC-GS">
+          <span class="icon is-small"><i class="fab fa-github"></i></span>
+          <span>METRIC-GS</span><span class="lock">private</span>
+        </a>
+      </div>
+
+      <div class="abstract">
+        <div class="abstract-label">Abstract</div>
+        <p>
+          A 3D Gaussian Splatting (3DGS) reconstruction inherits arbitrary units from
+          structure-from-motion, so it cannot be measured or used to place AR content until someone
+          supplies a scale. Both standard recipes are fragile on real captures: on five indoor scenes
+          with tape-measured ceilings a quantile floor-to-ceiling heuristic errs by 27%, metric-depth
+          alignment by 35&ndash;71% across three networks, and those networks disagree with each other
+          by up to a factor of 2.5 while all are wrong. We recover the scale from the reconstruction's
+          own semantic content and, just as importantly, refuse when the evidence is thin. A frozen 2D
+          teacher labels Gaussians by visibility-aware voting: only views that actually see a Gaussian
+          may vote on its label, which raises the scenes the estimator can correct from 16 to 28.
+          Instance-level size priors (doors, furniture, the floor-to-ceiling gap) are then fused by a
+          robust maximum-likelihood step under a quantile warm start; the fusion removes the
+          catastrophic failures single-cue estimators cannot defend against; it does not improve the
+          median. An inlier-mass test turns thin evidence into an explicit refusal that doubles as a
+          router to a heavyweight metric model. On 47 ScanNet++ scenes with laser ground truth, under a
+          configuration frozen after the first 19, it cuts the heuristic's mean error from 21.1% to
+          16.6%, and to 9.3% on the 28 scenes it acts on, at ~10 s per scene; routing only its refusals
+          to MASt3R matches running MASt3R everywhere with 60% fewer invocations. Applied unchanged to
+          13 phone and drone captures of our own, it improves all five captures it acts on, abstains on
+          the other eight, and degrades none. Along the way we report a measurement worth having on its
+          own: a current feed-forward metric model scores 2.3% on a benchmark inside its training
+          mixture, 5.6% on one it was evaluated against, and 28&ndash;35% on ordinary captures it has
+          never seen, so a published metric-scale number is a best case rather than a deployment
+          estimate.
+        </p>
+      </div>
+
+      <div class="content has-text-justified">
+        <p>
+          The other papers here ask whether a reconstruction is geometrically <i>right</i>. This one
+          asks whether it is <i>measurable</i> &mdash; and it is the piece of the portfolio that came
+          directly out of deployment rather than out of a benchmark. A 3DGS scene reconstructed from a
+          phone capture has no units. You cannot say how wide a corridor is, you cannot place a virtual
+          object at human scale, and you cannot compare two scans of the same room.
+        </p>
+        <p>
+          The design commitment is <b>refusal</b>. Every existing recipe returns a number
+          unconditionally, which is why they fail catastrophically and silently: metric-depth alignment
+          errs by 35&ndash;71% on real indoor captures, and three networks running the same recipe
+          disagree with each other by up to 2.5&times; while all of them are wrong. An estimator that
+          cannot tell a confident answer from a guess is worse than useless in a deployment, because
+          nothing downstream knows to distrust it. So the method scores the evidence and abstains when
+          the inlier mass is thin, and that abstention doubles as a router: the refused scenes go to a
+          heavyweight metric model, and the ones it handles itself cost ~10 s.
+        </p>
+      </div>
+
+      <figure>
+        <img src="./static/images/metric/overview.jpg" alt="METRIC-GS pipeline overview."/>
+        <figcaption>A quantile warm start seeds a learnable log-scale trained alongside the 3DGS.
+          Visibility gating restricts teacher votes to views that actually see a Gaussian; instance
+          size cues (doors 2.03 m, desks 0.74 m, ceilings 2.5 m) update the scale by robust MLE.
+          Where the cues disagree, the system abstains and routes to MASt3R rather than shipping a
+          number it cannot support.</figcaption>
+      </figure>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Results</h4>
+      <div class="content has-text-justified">
+        <p>
+          47 ScanNet++ scenes with laser ground truth, under a configuration frozen after the first 19
+          and then applied unchanged to the remaining 28.
+        </p>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <table class="table is-bordered is-narrow is-fullwidth has-text-centered results-table">
+            <thead>
+              <tr>
+                <th class="has-text-left">Method</th>
+                <th>Mean scale error<br/>(47 scenes)</th>
+                <th>On the 28 scenes<br/>ours acts on</th>
+                <th>Cost / abstains?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="has-text-left">Quantile floor&rarr;ceiling heuristic</td><td>21.1%</td><td>16.8%</td><td>in-pipeline, never</td></tr>
+              <tr><td class="has-text-left">Depth Anything 3 (metric alignment)</td><td>28.8%</td><td>&mdash;</td><td>never</td></tr>
+              <tr><td class="has-text-left">MASt3R (metric checkpoint)</td><td class="r2">9.9%</td><td class="r3">10.2%</td><td>full reconstruction, never</td></tr>
+              <tr><td class="has-text-left">MoGe-2 <i>(in-domain&Dagger;)</i></td><td>2.3%</td><td>&mdash;</td><td>never</td></tr>
+              <tr><td class="has-text-left"><b>METRIC-GS (Ours)</b></td><td class="r3"><b>16.6%</b></td><td class="r1"><b>9.3%</b></td><td><b>~10 s, abstains on 19</b></td></tr>
+            </tbody>
+          </table>
+          <p class="is-size-7" style="color:#888;">
+            &Dagger; ScanNet++ sits inside MoGe-2's training corpus, so that row is in-domain and not
+            comparable. Outside its mixture the same model errs by 28&ndash;35% on ordinary captures
+            &mdash; the measurement the paper argues is worth reporting on its own.
+          </p>
+        </div>
+      </div>
+
+      <figure style="margin-top:1.5rem;">
+        <img src="./static/images/metric/scannetpp_scale_error.png" alt="Per-scene metric scale error on ScanNet++."/>
+        <figcaption>Per-scene error, sorted by the heuristic. Grey bars connect the heuristic estimate
+          to ours; open circles are abstentions, which simply inherit the warm start. The corrections
+          are concentrated exactly where the heuristic fails worst.</figcaption>
+      </figure>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Frozen system on our own captures</h4>
+      <div class="content has-text-justified">
+        <p>
+          13 captures recorded on phones and a drone, with no tuning and no per-dataset configuration
+          &mdash; offices, a robotics lab, a house corridor, a show flat, and residential interiors.
+          The system improves all five captures it acts on, abstains on the other eight, and degrades
+          none. The videos below carry the delivered scale bar and the act/abstain decision burned in,
+          so each clip states what the estimator actually claimed about that scene.
+        </p>
+      </div>
+
+      <div class="carousel results-carousel mixed-carousel">
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_office.jpg">
+            <source src="./static/videos/metric/office.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_house_corridor.jpg">
+            <source src="./static/videos/metric/house_corridor.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_apartment_a.jpg">
+            <source src="./static/videos/metric/apartment_a.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_robotics_lab.jpg">
+            <source src="./static/videos/metric/robotics_lab.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_show_flat.jpg">
+            <source src="./static/videos/metric/show_flat.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_home_b_phone.jpg">
+            <source src="./static/videos/metric/home_b_phone.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/metric_home_c_photos.jpg">
+            <source src="./static/videos/metric/home_c_photos.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <p class="is-size-7 has-text-centered" style="margin-top: 0.6rem; color: #888;">
+        Office floor and house corridor (acts), apartment A (acts), robotics lab and show flat
+        (abstains, no usable anchor), home B phone capture and home C photo set (abstains).
+      </p>
+
+      <br/>
+      <figure>
+        <img src="./static/images/metric/custom_qual.jpg" alt="Act and abstain decisions on own captures."/>
+        <figcaption>The same four captures as still frames with the delivered scale bar. Blue frames
+          are scenes the estimator acts on and corrects; grey frames are refusals &mdash; thin inlier
+          mass in the show flat, no ceiling cue in the robotics lab.</figcaption>
+      </figure>
+
+      <ul class="keyfacts">
+        <li><b>Visibility-aware voting is what makes coverage possible:</b> restricting teacher votes
+            to views that actually see a Gaussian raises the correctable scene count from 16 to 28.</li>
+        <li>Robust MLE fusion <b>removes the catastrophic tail</b> that single-cue estimators cannot
+            defend against &mdash; and the paper is explicit that it does not improve the median.</li>
+        <li>Routing only the refusals to MASt3R <b>matches running MASt3R everywhere with 60% fewer
+            invocations</b>; on the scenes it handles itself the two are statistically
+            indistinguishable (9.3% vs. 10.2%).</li>
+        <li>The scale machinery adds <b>no measurable training overhead</b> (5.6 vs. 6.2 min on the
+            largest scene) and no systematic quality cost (mean &Delta;PSNR within 0.07 dB).</li>
+        <li>A benchmark inside a model's training mixture does not estimate what it delivers elsewhere
+            &mdash; reported as a standalone measurement rather than buried as a caveat.</li>
+      </ul>
+    </div>
+
+
+    <!-- ============ DiSDF-GS ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">DiSDF-GS &mdash; Scene-Scale Meshing by Frozen-Prior SDF Distillation</h3>
+        <span class="chip chip-progress">in progress</span>
+      </div>
+      <p class="project-role">Sole developer · prior rendering, neural SDF distillation, meshing, export</p>
+
+      <div class="project-links">
+        <a href="https://github.com/sooyeunYang0116/DiSDF-GS">
+          <span class="icon is-small"><i class="fab fa-github"></i></span>
+          <span>DiSDF-GS</span><span class="lock">private</span>
+        </a>
+      </div>
+
+      <div class="content has-text-justified">
+        <p>
+          A scene-level alternative to SuGaR for extracting meshes from 3D Gaussian Splatting, built to
+          run comfortably on a single 16 GB GPU at full mip360 scale &mdash; where SuGaR's joint
+          mesh&harr;Gaussian refinement becomes impractical. SuGaR is expensive because it
+          re-regularizes all Gaussians toward a surface, Poisson-reconstructs from dense samples, and
+          then binds Gaussians to mesh triangles and jointly optimizes both. That last stage is what
+          blows up VRAM.
+        </p>
+        <p>
+          This method inverts the arrangement: <b>the 3DGS is frozen and never optimized again</b>, and
+          serves only as a read-only oracle. Using the override-color trick on the stock rasterizer
+          &mdash; no CUDA rebuild, no depth-capable fork &mdash; each training view yields alpha-blended
+          expected depth, accumulated opacity, and depth variance in a single pass (colors
+          <code>[z, 1, z&sup2;]</code>), plus camera-oriented world normals in a second. Those geometric
+          priors are distilled into a continuous neural SDF, a pure-PyTorch multi-resolution hash grid
+          with a small MLP, supervised by multi-view projective TSDF with free-space carving, an
+          Eikonal term, and normal consistency. Per-ray confidence comes from opacity &times; depth
+          uncertainty, <code>1/(1+&lambda;&middot;Var/d&sup2;)</code>, so noisy and translucent pixels
+          down-weight themselves automatically.
+        </p>
+        <p>
+          Extraction is marching cubes with the full grid held in <b>CPU RAM</b> while only batches
+          touch the GPU, gated by a surface-support mask built from dilated observed depth points that
+          forbids zero-crossings in unobserved space &mdash; which is what kills the hallucinated
+          geometry that plagues unconstrained neural SDFs. Because multi-view TSDF fusion into a
+          continuous field averages out the per-view noise of vanilla 3DGS depth, the result is a
+          coherent surface without ever flattening or retraining the Gaussians.
+        </p>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <figure>
+            <img src="./static/images/projects/disdf_garden.jpg" alt="Garden: ground truth vs. extracted mesh."/>
+            <figcaption>Garden (Mip-NeRF 360) &mdash; ground truth (left) against the extracted,
+              color-baked mesh (right) across three viewpoints.</figcaption>
+          </figure>
+        </div>
+        <div class="column">
+          <figure>
+            <img src="./static/images/projects/disdf_truck.jpg" alt="Truck: ground truth vs. extracted mesh."/>
+            <figcaption>Truck (Tanks and Temples) &mdash; the same comparison. Painted detail survives
+              baking, and the support mask keeps the background from hallucinating.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Cost breakdown (mip360 Garden, RTX 4080 16 GB)</h4>
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <table class="table is-bordered is-narrow is-fullwidth has-text-centered results-table">
+            <thead>
+              <tr><th class="has-text-left">Stage</th><th>Time</th><th>Peak VRAM</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="has-text-left">Render priors</td><td>~4 s</td><td>0.7 GB</td></tr>
+              <tr><td class="has-text-left">Distill SDF (8k it.)</td><td>~12 min</td><td>~4.5 GB</td></tr>
+              <tr><td class="has-text-left">Extract @512&sup3; (+ color + texture)</td><td>~1&ndash;2 min</td><td>&lt;1 GB</td></tr>
+              <tr><td class="has-text-left">Viewer feature field (3k it.)</td><td>~13 min</td><td>~6 GB</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <ul class="keyfacts">
+        <li>Grid memory is paid in <b>system RAM</b> (512&sup3; float32 &asymp; 0.5 GB), not VRAM
+            &mdash; so mesh resolution scales with RAM rather than against the 16 GB GPU ceiling.</li>
+        <li>No per-Gaussian optimization and no mesh in the loop: the only trainable object is a
+            17&ndash;67M-parameter field.</li>
+        <li>Full export path &mdash; PLY, OBJ+MTL, GLB, USD, textured or vertex-colored, multi-object
+            &mdash; plus SAM + supervoxel per-object mesh segmentation and UV-atlas texture baking.</li>
+        <li>Diagnosed and fixed a common failure mode along the way: the classic "broken model" streaks
+            in trained Gaussian models come from non-finite Gaussians, now pruned explicitly.</li>
+        <li>Follow-on work (<b>ConfSurf</b>) is adding distribution-free conformal error guarantees to
+            the reconstructed surface, so each region carries a calibrated bound rather than an
+            unquantified estimate.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================ CONTROL & ROBOTICS ============================ -->
+<section class="section" id="control">
+  <div class="container is-max-desktop">
+    <p class="section-label">Control &amp; Robotics</p>
+
+    <!-- ============ SMC ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">Sliding Mode Control for Robust Vision Stabilization under the Plant-Binding Condition</h3>
+        <span class="chip chip-done">ICCAS 2026 · accepted</span>
+      </div>
+      <p class="project-role">First author (with J. B. Choi and S. B. Choi) · derivation, implementation, two-domain evaluation, ablation</p>
+
+      <div class="project-links">
+        <a href="https://github.com/sooyeunYang0116/iccas2026_sooyeunYang">
+          <span class="icon is-small"><i class="fab fa-github"></i></span>
+          <span>iccas2026_sooyeunYang</span><span class="lock">private</span>
+        </a>
+      </div>
+
+      <div class="abstract">
+        <div class="abstract-label">Abstract</div>
+        <p>
+          Boundary-layer Sliding Mode Control (SMC) has been applied to vision-based stabilization, but
+          identifying its activation condition against simpler causal baselines (LPF, PID) has been
+          elusive. The operational condition is <i>plant binding</i>: the disturbance velocity
+          approaches or exceeds the actuator slew limit, so the bounded per-step actuation budget
+          binds. We validate this in two independent vision domains: handheld translation stabilization
+          (12 1080p clips; LPF, PID, SMC, L&sup1;) and angular re-framing against a virtual
+          slew-rate-limited pan&ndash;tilt&ndash;zoom (PTZ) plant. Outside binding, leave-one-out
+          cross-validation makes SMC and LPF on translation statistically indistinguishable, and PID
+          beats SMC on the angular 99th-percentile pointing offset by 5.85&deg; (95% CI clear of zero);
+          inside binding &mdash; reached only by sweeping the simulated slew limit, as both captured
+          datasets land outside it &mdash; the translation gap stays a tie and SMC beats PID on the
+          angular worst case (Cohen's d up to +0.83). The PTZ plant's 100&deg;/s default sits on the
+          cross-over, which explains a small-margin PID result previously reported in the angular
+          setting. A complementary ablation shows raising the SMC reaching gain k costs mean tracking
+          outside a narrow window.
+        </p>
+      </div>
+
+      <figure>
+        <img src="./static/images/projects/smc_loop.png" alt="Unified per-axis vision control loop."/>
+        <figcaption>The unified per-axis loop the claim is tested in. Motion is estimated by ORB + LK,
+          split into operator intent and bounded shake, and fed to one of four controllers against a
+          saturating actuator whose per-step budget is V<sub>max</sub>&Delta;t &mdash; the term that
+          decides whether SMC's robustness is load-bearing at all.</figcaption>
+      </figure>
+
+      <div class="content has-text-justified">
+        <p>
+          Handheld video stabilization is normally treated as a trajectory-smoothing problem. This work
+          reframes it as <b>disturbance rejection</b>. Per-frame camera motion (t<sub>x</sub>,
+          t<sub>y</sub>, &theta;) is recovered with an ORB + Lucas&ndash;Kanade pipeline and split by a
+          zero-phase Butterworth filter into the operator's intentional pan and a high-frequency shake
+          residual. The shake is then modelled as a bounded matched disturbance |d(t)| &le; &epsilon;
+          acting on a virtual unit-mass double integrator whose state is the per-frame compensating
+          warp, and a boundary-layer sliding mode controller is designed on the tracking error:
+        </p>
+        <p style="text-align:center; font-family:monospace; font-size:0.92rem; line-height:1.9;">
+          &#7819;&#8321; = x&#8322;,&nbsp;&nbsp; &#7819;&#8322; = u + d(t),&nbsp;&nbsp; |d(t)| &le; &epsilon;<br>
+          s = c&middot;e + &#279;,&nbsp;&nbsp; u = u<sub>eq</sub> &minus; k &middot; sat(s/&phi;),&nbsp;&nbsp; k &gt; &epsilon;
+        </p>
+        <p>
+          The paper proves finite-time reaching of the boundary layer under k &gt; &epsilon; via a
+          Lyapunov argument, and identifies a discrete-time stability constraint that the SMC literature
+          under-discusses: the boundary-layer thickness must satisfy <b>&phi; &gt; k&Delta;t/2</b>, or
+          the discretized controller chatters regardless of how sound the continuous-time design looks.
+        </p>
+        <p>
+          What makes the evaluation worth reading is that it began as two negative results and the
+          paper is the explanation of them. On 12 handheld 1080p clips SMC came in behind a causal
+          Butterworth low-pass filter by 2.67 px of above-cutoff residual; on a virtual PTZ plant it
+          came in behind a tuned PID by 5.85&deg; at the 99th-percentile pointing offset. Both drafts
+          read as "SMC underperforms". Neither identified the regime in which bounded-disturbance
+          robustness actually becomes load-bearing.
+        </p>
+        <p>
+          The resolution is a single condition. The discontinuous machinery only pays for itself when
+          the disturbance velocity approaches the actuator's slew limit &mdash; when the bounded
+          per-step actuation budget <b>binds</b>. Outside that regime, leave-one-out cross-validation
+          makes SMC and LPF on translation statistically indistinguishable (+0.050 px, CI crossing
+          zero) and PID genuinely wins the angular worst case. Inside it, reached by sweeping the
+          simulated slew limit through the crossing, the translation gap stays a tie and SMC takes the
+          angular worst case with Cohen's d up to +0.83. The PTZ plant's 100&deg;/s default happens to
+          sit almost exactly on the cross-over, which is why the earlier comparison read as a
+          structural SMC deficiency when it was an operating-point choice. The paper scopes the claim
+          honestly: the sweep is simulated, and the hardware demonstration is future work.
+        </p>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <figure>
+            <img src="./static/images/projects/smc_timeseries.png" alt="Recovered camera motion: raw vs. stabilized."/>
+            <figcaption>Recovered camera motion across all three axes. Raw shake (grey) against LPF,
+              PID, and SMC. PID visibly overshoots on &theta; where SMC holds.</figcaption>
+          </figure>
+        </div>
+        <div class="column">
+          <figure>
+            <img src="./static/images/projects/smc_surface.png" alt="Sliding surface trajectory with boundary layer."/>
+            <figcaption>The sliding surface s(t) = c&middot;e&#8321; + e&#8322; against the
+              &plusmn;&phi; = 2.0 boundary layer. s stays outside the layer in 98.8% of frames at
+              k = 10 &mdash; which is exactly why the choice of switching law stops mattering at that
+              gain.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Per-frame latency</h4>
+      <div class="content has-text-justified">
+        <p>
+          Single-thread CPU benchmark, 5000-frame median, BLAS pinned to one thread:
+        </p>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <table class="table is-bordered is-narrow is-fullwidth has-text-centered results-table">
+            <thead>
+              <tr><th class="has-text-left">Method</th><th>ms / frame</th><th>Causal?</th><th>Real-time ceiling</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="has-text-left">LPF</td><td>0.012</td><td>yes</td><td>&mdash;</td></tr>
+              <tr><td class="has-text-left"><b>SMC (proposed)</b></td><td><b>0.019</b></td><td>yes</td><td>&mdash;</td></tr>
+              <tr><td class="has-text-left">PID</td><td>0.019</td><td>yes</td><td>&mdash;</td></tr>
+              <tr><td class="has-text-left">L&sup1; full (whole-clip LP, amortised)</td><td>0.56</td><td>no</td><td>&mdash;</td></tr>
+              <tr><td class="has-text-left">L&sup1; windowed (60-frame sliding LP)</td><td>7.0</td><td>no</td><td>142 fps</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <ul class="keyfacts">
+        <li>The same binding condition governs SMC activation in <b>both</b> domains &mdash;
+            translation stabilization and angular re-framing against a slew-limited plant &mdash;
+            which is what turns a per-domain result into a stated operating condition.</li>
+        <li>Causal methods clear 60 fps real-time by <b>3&ndash;4 orders of magnitude</b>;
+            L&sup1;-windowed's 142 fps ceiling rules it out for high-framerate deployment without GPU
+            acceleration.</li>
+        <li>Four-axis ablation (switching law, time-varying surface, MIMO coupling, adaptive &epsilon;)
+            locates the Pareto-best gain at <b>(c, k, &phi;) = (25, 10, 2)</b> and finds nothing that
+            beats it.</li>
+        <li>At k = 10 the sgn / sat / sigmoid switching laws coincide because s stays outside
+            &plusmn;&phi; in 98.8% of frames; push to k = 150 and sgn / sigmoid lose 6&ndash;7 dB ITF.</li>
+        <li>Off-diagonal coupling in C <i>drops</i> ITF by 5&ndash;7 dB on tracking clips, because
+            <code>estimateAffinePartial2D</code> already orthogonalises (t<sub>x</sub>, t<sub>y</sub>,
+            &theta;) &mdash; a negative result worth reporting.</li>
+        <li>Deployment limitation stated plainly: valid-frame crop falls to 0% on the worst-shake
+            jog/pan clips for both LPF and SMC, so a u<sub>max</sub> cap or motion inpainting is
+            required before shipping.</li>
+      </ul>
+    </div>
+
+
+        <!-- ============ Mobile capture system ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">Mobile Capture System &mdash; Real-Time Guidance, On-Device SfM, and AR Deployment</h3>
+        <span class="chip chip-done">Flutter + ARCore + ORB-SLAM3 · working on-device</span>
+      </div>
+      <p class="project-role">Sole developer · Flutter/Dart app, native Kotlin tracker layer, ORB-SLAM3 integration, PC-side pipeline, AR deployment</p>
+
+      <div class="project-links">
+        <a href="https://github.com/sooyeunYang0116/AR-Data-Collection">
+          <span class="icon is-small"><i class="fab fa-github"></i></span>
+          <span>AR-Data-Collection</span><span class="lock">private</span>
+        </a>
+      </div>
+
+      <div class="content has-text-justified">
+        <p>
+          Capturing a 3D-Gaussian-Splatting dataset with a phone normally means shooting blind. You
+          walk a room, you guess at how much to move between shots, and you find out hours later, on a
+          PC, whether COLMAP could register the images at all. If it could not, the room is gone &mdash;
+          the lighting has changed, the furniture has moved, and the capture has to be redone. That
+          feedback loop is the single biggest practical obstacle to non-expert 3D capture, and it is
+          what this system exists to close.
+        </p>
+        <p>
+          The result is one application that guides the operator while scanning, runs
+          structure-from-motion <b>on the phone</b> so the COLMAP model is complete the moment recording
+          stops, and pins AR markers in world space at each capture point so the operator can see their
+          own coverage. It arrived through three distinct phases of work, and the discarded versions are
+          as informative as the surviving one.
+        </p>
+      </div>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Phase 1 &mdash; Feasibility: can camera pixels alone guide capture?</h4>
+      <div class="content has-text-justified">
+        <p>
+          The first question was narrow and answerable: can a phone tell you <b>when to capture the next
+          frame</b> using camera pixels only &mdash; no IMU, no ARCore, no depth &mdash; cheaply enough
+          that the preview never stutters? Frame-to-frame overlap is what makes COLMAP matching succeed,
+          and it is exactly what an operator cannot judge by eye.
+        </p>
+        <p>
+          A throwaway Flutter mockup answered it. Three real-time signals, no map, no persistence beyond
+          the current keyframe: an <b>overlap gauge</b> with the sweet spot marked explicitly (green at
+          60&ndash;80%, amber above 80% for "barely moved" or 50&ndash;60% for "capture soon", red below
+          50% for "gap risk"), a <b>motion warning</b> when tracked points jump too far per frame, and a
+          <b>tracking state</b> that reports collapse when the point set dies on blur or a blank
+          surface. An AUTO mode fired captures inside the green band with a 1.5 s cooldown.
+        </p>
+        <p>
+          The engineering lesson came from a failure. The first iteration used ORB
+          detect-describe-match with a homography coverage map, and it was too slow and lost tracking
+          constantly. The rework threw out both: detect-describe-match was replaced with <b>sparse
+          optical flow</b>, and the map was dropped entirely. Corners are detected <i>only</i> when a
+          keyframe is set (<code>goodFeaturesToTrack</code>, &le;250 points), never per frame; each
+          analyzed frame simply tracks the keyframe's points forward with pyramidal
+          Lucas&ndash;Kanade. Flow on a 384 px image costs low single-digit milliseconds and is more
+          stable under small motion than feature matching ever was.
+        </p>
+        <p>
+          The rest was throughput discipline that carried into the production app. The camera streams
+          YUV420 and the <b>Y plane is used directly as grayscale</b> with no color conversion,
+          hard-downscaled to 384 px, while the preview stays full resolution because analysis never
+          touches its pixels. Analysis is throttled to ~14 Hz inside an isolate where the newest frame
+          wins and everything else is dropped &mdash; no queue, so latency cannot accumulate. The UI
+          updates through <code>ValueNotifier</code>-driven <code>CustomPaint</code>s inside
+          <code>RepaintBoundary</code>s, so the widget tree is never rebuilt per frame.
+        </p>
+      </div>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Phase 2 &mdash; The app: eight stages to on-device SfM</h4>
+      <div class="content has-text-justified">
+        <p>
+          The production application was built in eight recorded stages, and its architecture is the
+          product of one full round trip. It began as an ARCore point-cloud minimap, was torn down and
+          rebuilt as a portable pure-RGB collector, and then came back around &mdash; ARCore returned as
+          an <i>optional</i> tracker behind a platform-agnostic contract. The rebuild is what forced the
+          abstraction that now makes iOS support additive rather than a rewrite.
+        </p>
+        <ol>
+          <li><b>Base app</b> &mdash; Flutter with a minimal native Kotlin platform channel around a raw
+              ARCore <code>Session</code>, because no Flutter AR plugin exposes the raw point cloud and
+              pose stream. Native side handles session lifecycle, GL camera background, per-frame sparse
+              point cloud and Depth API sampling, world-space voxel dedup, and streams
+              <code>{pose, new voxels, tracking state, stats}</code> to Dart over an EventChannel.</li>
+          <li><b>Dataset collection v1</b> &mdash; capture state and gallery saving. Each tracked frame
+              is copied to NV21 on the GL thread (the image must be released before the next frame),
+              JPEG-encoded on a single background thread so the camera loop never blocks on I/O, rotated
+              upright in pixels rather than metadata, and written through MediaStore.</li>
+          <li><b>Keyframe selection</b> &mdash; time-based capture replaced by a pose-derived overlap
+              estimate: relative rotation angle against horizontal FOV, and translation baseline against
+              view width at mean scene depth. Above 70% overlap the frame is skipped as redundant;
+              at or below 70% with &ge;50 sparse features it is saved; below 70% but with too few
+              features it is <i>dropped before ever being written</i>, because it could never be
+              matched; below 60% the previous keyframe is unmatchable, so the current frame becomes the
+              anchor of a new segment.</li>
+          <li><b>Portability pivot</b> &mdash; ARCore removed entirely in favour of a pure-RGB collector
+              that runs on any phone.</li>
+          <li><b>IMU-assisted capture</b> &mdash; sessions, IMU-assisted keyframing, and the full
+              COLMAP&rarr;3DGS pipeline on the PC side.</li>
+          <li><b>On-device SfM</b> &mdash; ARCore returns, this time behind a portable tracker
+              contract.</li>
+          <li><b>Any-phone SLAM</b> &mdash; a bundled headless ORB-SLAM3 ships inside the app,
+              removing the certification gate entirely.</li>
+          <li><b>Consumer-grade scan UX</b> &mdash; the guidance, markers, and progress feedback that
+              make it usable by someone who has never heard of structure-from-motion.</li>
+        </ol>
+        <p>
+          The app now picks the best of three capture modes automatically, degrading one rung at a time
+          rather than failing outright:
+        </p>
+        <ol>
+          <li><b>ARCore SfM mode</b> &mdash; on certified phones, the native tracker streams 6-DoF pose
+              plus sparse points and the app writes a COLMAP model live on the device.</li>
+          <li><b>SLAM SfM mode</b> (the primary mode, any Android phone) &mdash; bundled headless
+              <b>ORB-SLAM3</b> in monocular mode with no certification gate: live pose, live map points,
+              live COLMAP model, AR photo-thumbnail markers pinned at every capture spot,
+              Korean-language guidance, and haptic capture ticks.</li>
+          <li><b>Pure-RGB mode</b> (any phone with a camera) &mdash; automatic keyframe selection from
+              the camera image and IMU, with COLMAP run afterwards on the PC.</li>
+        </ol>
+        <p>
+          All logic &mdash; keyframing, COLMAP model writing, session storage, UI &mdash; is shared
+          Dart. The only platform-specific piece is a thin tracker layer behind a single channel
+          contract (<code>lib/device_tracker.dart</code>): ARCore in Kotlin today, with ARKit in Swift
+          able to implement the same contract for iOS. A phone without ARCore, or without a gyroscope,
+          steps down gracefully.
+        </p>
+      </div>
+
+      <div class="content">
+        <p style="font-family:monospace; font-size:0.8rem; background:#f7f7f7; padding:1rem; border-radius:6px; overflow-x:auto; white-space:pre; line-height:1.7;">[phone] SLAM AR scan ─────▶ COLMAP model built live on the phone
+                             │  (sessions/&lt;id&gt;/images + sparse/0)
+                             ▼ USB (adb)
+[PC] rgbm_pipeline.py run ──▶ package (0.1 s)  or  --refine (~2 min)
+                             │
+                             ▼
+[PC] gaussian-splatting train.py ──▶ 3D model</p>
+      </div>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Phase 3 &mdash; AR deployment on device</h4>
+      <div class="content has-text-justified">
+        <p>
+          The videos below are the finished system running on a consumer handset during a real office
+          scan. Everything visible is computed on the phone: the recording timer and keyframe counter
+          (rising toward a 100-frame target), the live overlap gauge showing current versus target
+          overlap, per-frame processing latency, angular rate, tracked point count, a live top-down map
+          growing as the room is explored, and green <b>AR markers pinned in world space</b> at each
+          capture point so the operator can see their own coverage from across the room.
+        </p>
+        <p>
+          The guidance is plain language rather than diagnostics &mdash; "Good, keep scanning slowly",
+          "Initializing, translate the phone sideways over texture", "Tracking lost, go back to a
+          mapped textured area". Per-frame latency stays in the 21&ndash;53 ms band throughout, which
+          is what keeps the guidance honest: a gauge that lags is worse than no gauge, because the
+          operator has already moved by the time it updates.
+        </p>
+        <p>
+          AR is also where floater suppression stops being an aesthetic concern and starts being a
+          functional one. In an offline viewer a floater is soft haze you can look past. Registered
+          against the real world on a handset, unsupported density sits visibly in mid-air where a
+          viewer can walk around it and see it from angles the training set never contained &mdash;
+          which makes on-device AR a fairly brutal qualitative test for exactly the artifacts the
+          research half of this portfolio exists to remove.
+        </p>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/app_scan.jpg">
+            <source src="./static/videos/projects/app_scan.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered" style="color:#888; margin-top:0.45rem;">
+            Mid-scan: keyframes accumulating, overlap gauge tracking toward target, AR markers pinned
+            at each captured viewpoint.</p>
+        </div>
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/app_complete.jpg">
+            <source src="./static/videos/projects/app_complete.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered" style="color:#888; margin-top:0.45rem;">
+            Later in the same session: the live top-down map has grown down the corridor, and
+            tracking-loss recovery guidance fires on a textureless stretch.</p>
+        </div>
+      </div>
+
+      <br/>
+      <video controls muted loop playsinline preload="none" poster="./static/images/posters/ar_seggs.jpg">
+        <source src="./static/videos/projects/ar_seggs.mp4" type="video/mp4">
+      </video>
+      <p class="is-size-7 has-text-centered" style="color:#888; margin-top:0.45rem;">
+        A segmentation-guided reconstruction deployed back onto the handset in AR &mdash; the round
+        trip from capture to reconstruction to on-device viewing.</p>
+
+      <ul class="keyfacts">
+        <li>Requires only <b>Android 7.0+ (arm64) and a camera</b> &mdash; explicitly no ARCore
+            certification, which is what makes it deployable on arbitrary field devices.</li>
+        <li>SfM runs on the phone <i>while you scan</i>, so the COLMAP model is complete the instant
+            recording stops. PC-side packaging takes <b>0.1 s</b>; an optional <code>--refine</code>
+            pass takes ~2 min. Neither involves waiting for a from-scratch reconstruction.</li>
+        <li>Per-frame latency measured on-device stays in the <b>21&ndash;53 ms</b> range during live
+            scanning, including SLAM, keyframe evaluation, AR rendering, and UI.</li>
+        <li>Unmatchable frames are rejected <i>before</i> being written rather than cleaned up
+            afterwards &mdash; the capture set stays clean by construction.</li>
+        <li>A single channel contract isolates all platform-specific code, so iOS/ARKit support is an
+            additive change rather than a rewrite.</li>
+        <li>Ships prebuilt Android OpenCV binaries via Dart native assets, bundling only core, imgproc,
+            imgcodecs, and video &mdash; the heavy features2d and calib3d modules the abandoned ORB
+            approach needed are excluded, so no NDK C++ lives in the repo.</li>
+      </ul>
+    </div>
+
+
+    <!-- ============ Isaac Sim ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">Isaac Sim / Isaac Lab Simulation Workspace</h3>
+        <span class="chip chip-done">research infrastructure</span>
+      </div>
+      <p class="project-role">Sole developer · environment engineering, version resolution, smoke testing</p>
+
+      <div class="content has-text-justified">
+        <p>
+          Reproducible simulation infrastructure for reinforcement-learning and active-perception
+          experiments &mdash; the closed-loop testbed that ReVisit-GS's planning work needs in order to
+          move from offline campaigns to embodied evaluation.
+        </p>
+        <p>
+          The substantive part of this work is the version resolution, which is the kind of thing that
+          silently costs a week if you get it wrong. Isaac Sim 5.0.0 was chosen deliberately: the lab
+          machine runs NVIDIA driver 535.309.01, while Isaac Sim 6.0 requires driver &ge; 595 and 5.1 is
+          tested against 580.65.06. Isaac Sim 5.0's minimum tested driver is 535.216.01 &mdash; so 5.0
+          is the newest release the hardware actually qualifies for without a driver upgrade that would
+          disturb every other CUDA project on the machine. Isaac Lab 2.2.x is the matching framework
+          generation for that runtime.
+        </p>
+        <p>
+          Installed via pip into a pinned conda environment on Python 3.11, with a headless smoke test
+          for verification, a GUI launcher, and scene assets, plus documented cache locations so that
+          rebuilding on another machine is mechanical rather than exploratory.
+        </p>
+        <p>
+          What the workspace is actually <i>for</i> is closing the loop between the reconstruction work
+          and an embodied agent. Real captures are reconstructed with 3DGS, meshed with DiSDF-GS, and
+          loaded back into Isaac Sim as collidable worlds &mdash; so a legged robot can walk on a
+          scanned garden, rigid bodies can drop onto a scanned surface, and the ReVisit-GS planner can
+          be evaluated closed-loop under a real motion budget instead of teleporting between poses.
+          Reconstruction quality stops being a rendering metric at that point and becomes a physical
+          one: a floater is a phantom collider, and a hallucinated floor is a robot falling through it.
+        </p>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/isaac_anymal_garden.jpg">
+            <source src="./static/videos/isaac/anymal_garden.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">ANYmal walking on the reconstructed <i>garden</i> scene</p>
+        </div>
+        <div class="column">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/isaac_anymal_truck.jpg">
+            <source src="./static/videos/isaac/anymal_truck.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">The same robot on <i>truck</i> (Tanks and Temples)</p>
+        </div>
+        <div class="column">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/isaac_truck_drive.jpg">
+            <source src="./static/videos/isaac/truck_drive.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">Wheeled traversal across the same reconstructed geometry</p>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/isaac_garden_drop.jpg">
+            <source src="./static/videos/isaac/garden_drop.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">Rigid-body drop test &mdash; the collision surface comes from the
+            reconstruction itself, so the physics is a direct read on mesh quality.</p>
+        </div>
+        <div class="column is-half">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/revisit_mesh_garden.jpg">
+            <source src="./static/videos/revisit/mesh_garden.mp4" type="video/mp4">
+          </video>
+          <p class="video-label">The <i>garden</i> mesh extracted by DiSDF-GS, orbited live inside
+            Isaac Sim &mdash; the hand-off between the meshing work and the simulator.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================ APPLIED ============================ -->
+<section class="section" id="applied">
+  <div class="container is-max-desktop">
+    <p class="section-label">Applied &amp; Collaborative Work</p>
+
+    <!-- ============ KSME ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">Low-VRAM Indoor Floater-Suppressed 3D Reconstruction for Remote PHM</h3>
+        <span class="chip chip-applied">KSME 2026 · presented, Jeju</span>
+      </div>
+      <p class="project-role">First author (with J. B. Choi) · presented at the Korean Society of Mechanical Engineers, Reliability Division</p>
+
+      <div class="content has-text-justified">
+        <p>
+          The deployment-facing framing of the floater-suppression research, and the one piece of this
+          portfolio that has been presented rather than submitted.
+        </p>
+        <p>
+          In remote Prognostics and Health Management, a reconstruction method faces two constraints
+          simultaneously that the computer-vision literature rarely imposes together: it must be light
+          enough to run on-site with the compute an inspection team actually carries, and it must
+          produce geometry good enough to transmit, visualize, and analyze for condition assessment.
+          Indoor environments make both harder. Narrow structures, complex boundaries, occlusion,
+          reflection, and background interference are exactly the conditions under which 3DGS
+          manufactures floating artifacts unrelated to real structure &mdash; and those artifacts do not
+          merely lower a metric. They actively obstruct the thing the inspection exists for: reading
+          surface condition, structural boundaries, and signs of abnormality.
+        </p>
+        <p>
+          The system developed here targets that regime directly, applying semantic-information-based
+          alignment and control strategies to suppress structurally implausible Gaussians while
+          operating within a low VRAM budget. The result is an approach whose practical deployability
+          and reconstruction quality improve together rather than trading against each other, which is
+          the argument for its viability as a practical indoor remote-PHM method.
+        </p>
+      </div>
+
+      <ul class="keyfacts">
+        <li>Presented at KSME 2026 (Reliability Division), Jeju &mdash; abstract and presentation
+            prepared in both Korean and English.</li>
+        <li>Supported by a National Research Foundation of Korea grant, funded by the Korean
+            government (MSIT).</li>
+        <li>Provides the application bridge between the ACCV/ECCV method papers and a concrete
+            inspection use case, under the same low-VRAM constraint that motivates TIDI-GS's
+            point-budget schedule.</li>
+      </ul>
+    </div>
+
+
+        <!-- ============ RAPA ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">MetaReal &mdash; Metaverse Lab Capture &amp; Reconstruction Program</h3>
+        <span class="chip chip-applied">government-funded project · RAPA</span>
+      </div>
+      <p class="project-role">Research assistant · capture protocol, operator guidance material, IMU integration, mobile and drone deployment, reconstruction tuning, interim evaluation reporting</p>
+
+      <div class="content has-text-justified">
+        <p>
+          A government-funded metaverse lab program covering the full path from raw capture to a
+          reconstruction someone can actually deploy. Unlike benchmark work, the binding constraints
+          came from the field rather than a leaderboard: non-expert operators, phones and drones
+          instead of rigs, uneven interior lighting, and a VRAM budget set by whatever hardware
+          happened to be available on site.
+        </p>
+        <p>
+          My contributions spanned the pipeline. On the <b>capture</b> side, a structured
+          data-collection protocol, the operator guidance material below, and the IMU-assisted capture
+          work that grew into the mobile capture system described above &mdash; the practical lesson
+          being that in the field, capture quality dominates final quality far more than the choice of
+          reconstruction algorithm. On the <b>reconstruction</b> side, tuning the pipeline to run within
+          practical VRAM budgets across drone, handheld, and consumer-phone sequences. On the
+          <b>reporting</b> side, interim evaluation materials for the funding body's review milestones.
+        </p>
+        <p>
+          This program is also where the motivation for most of the research above became concrete.
+          Floaters are an abstraction in a benchmark table. They are a very specific, very visible
+          problem when a non-expert operator walks a phone through an apartment interior and the result
+          comes back with haze smeared across every ceiling &mdash; which is precisely the artifact
+          visible on the ceilings in the residential scans below, and precisely what the
+          floater-suppression research was built to remove.
+        </p>
+      </div>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Residential interior reconstructions</h4>
+      <div class="content has-text-justified">
+        <p>
+          Full-apartment captures across two show units &mdash; kitchen, living room, and bedrooms
+          &mdash; reconstructed with the segmentation-guided pipeline. Interiors are the hard case:
+          textureless white walls give almost no photometric gradient to anchor Gaussians, curtains and
+          glossy floors are view-dependent, and the ceiling is where unsupported density collects.
+        </p>
+      </div>
+
+      <div class="carousel results-carousel">
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r1_kitchen.jpg">
+            <source src="./static/videos/projects/studio_r1_kitchen.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r1_living.jpg">
+            <source src="./static/videos/projects/studio_r1_living.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r1_room1.jpg">
+            <source src="./static/videos/projects/studio_r1_room1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video autoplay controls muted loop playsinline height="100%" poster="./static/images/posters/studio_r2_living.jpg">
+            <source src="./static/videos/projects/studio_r2_living.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <p class="is-size-7 has-text-centered" style="margin-top: 0.6rem; color: #888;">
+        Show unit 1 (kitchen, living room, bedroom) and show unit 2 (living room).
+      </p>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Operator guidance material</h4>
+      <div class="content has-text-justified">
+        <p>
+          Reconstruction quality in this program was decided at capture time by people who were not
+          researchers, so a large part of the work was turning "get good coverage" into instructions
+          somebody can actually follow. These animated guides encode the capture protocol for the three
+          situations that broke reconstructions most often: <b>rooms</b> (three laps with your back to
+          the wall, camera toward the room centre, at three heights), <b>corridors</b> (three passes,
+          walking all the way to the far end at each height rather than turning early), and
+          <b>hinges and doorways</b> &mdash; flagged as the most important case, because door frames
+          are where two rooms have to agree geometrically and where a sloppy capture splits a scene in
+          two.
+        </p>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/guide_room.jpg">
+            <source src="./static/videos/projects/guide_room.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered" style="color:#888; margin-top:0.45rem;">
+            Room scan &mdash; three laps, three heights</p>
+        </div>
+        <div class="column">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/guide_corridor.jpg">
+            <source src="./static/videos/projects/guide_corridor.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered" style="color:#888; margin-top:0.45rem;">
+            Corridor scan &mdash; three full-length passes</p>
+        </div>
+        <div class="column">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/guide_door.jpg">
+            <source src="./static/videos/projects/guide_door.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered" style="color:#888; margin-top:0.45rem;">
+            Hinges and doors &mdash; the critical case</p>
+        </div>
+      </div>
+
+      <h4 class="title is-5" style="margin-top:2rem;">Capture experiments</h4>
+
+      <div class="columns">
+        <div class="column">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/rapa_imu.jpg">
+            <source src="./static/videos/projects/rapa_imu.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered" style="color:#888; margin-top:0.45rem;">
+            IMU-assisted capture result</p>
+        </div>
+        <div class="column">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/rapa_mobile.jpg">
+            <source src="./static/videos/projects/rapa_mobile.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered" style="color:#888; margin-top:0.45rem;">
+            Reconstruction from a consumer folding-phone capture</p>
+        </div>
+        <div class="column">
+          <video controls muted loop playsinline preload="none" poster="./static/images/posters/rapa_capture.jpg">
+            <source src="./static/videos/projects/rapa_capture.mp4" type="video/mp4">
+          </video>
+          <p class="is-size-7 has-text-centered" style="color:#888; margin-top:0.45rem;">
+            Data-collection procedure in practice</p>
+        </div>
+      </div>
+
+      <ul class="keyfacts">
+        <li>Captures spanned drone, handheld, and consumer folding-phone sources &mdash; the last being
+            the hardest, and the one that most directly motivated the on-device capture app.</li>
+        <li>Operator guidance was treated as an engineering deliverable, not documentation: the three
+            failure situations were identified from actual failed reconstructions.</li>
+        <li>Reconstruction tuning targeted practical VRAM budgets rather than benchmark maxima, which
+            is the same constraint that later shaped TIDI-GS's point-budget schedule.</li>
+      </ul>
+    </div>
+
+
+    
+
+  </div>
+</section>
+
+
+<!-- ============================ TOOLS ============================ -->
+<section class="section" id="tools">
+  <div class="container is-max-desktop">
+    <p class="section-label">Tools &amp; Evaluation</p>
+
+    <!-- ============ InterGS ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">InterGS &mdash; An Interactive Click-to-Segment Viewer for 3DGS</h3>
+        <span class="chip chip-done">reproduction + viewer · working</span>
+      </div>
+      <p class="project-role">Sole developer · feature-field training, CUDA selection and editing kernels, SIBR viewer, end-to-end pipeline</p>
+
+      <div class="project-links">
+        <a href="https://github.com/sooyeunYang0116/InterGS">
+          <span class="icon is-small"><i class="fab fa-github"></i></span>
+          <span>InterGS</span><span class="lock">private</span>
+        </a>
+      </div>
+
+      <div class="content has-text-justified">
+        <p>
+          A reproduction of InterGS (ECCV 2024) that supplies the piece the original release does not:
+          an actual interactive viewer. The published work describes click-to-segment editing of a 3DGS
+          scene; the code ships no way to click. This repository builds one on top of the SIBR
+          real-time Gaussian viewer, so a scene goes from raw video to an interactive editor in three
+          commands and a click segments the object under the cursor in a few milliseconds &mdash; after
+          which it can be deleted, resized, translated, or duplicated live.
+        </p>
+        <p>
+          The pipeline trains vanilla 3DGS, generates SAM automatic masks for every training view,
+          sorts them by area into a two-level coarse/fine granularity prior, and attaches a learnable
+          24-d feature (12 coarse + 12 fine) to every Gaussian. Those features are trained
+          contrastively on &alpha;-blended 2D feature maps and then refined by Global Feature-guided
+          Learning over HDBSCAN clusters, before being exported into an augmented PLY that carries the
+          usual 3DGS attributes alongside the features. The viewer reads the feature under the clicked
+          pixel, takes cosine similarity against every Gaussian, and selects everything above
+          threshold. Selection and editing are CUDA kernels, which is what keeps both interactive
+          rather than a round trip through Python.
+        </p>
+      </div>
+
+      <ul class="keyfacts">
+        <li>Self-contained: the Python feature-field training, the C++ viewer, and vendored copies of
+            the graphdeco 3DGS rasterizer, scene loaders, trainer, and SIBR sources all live in one
+            repository.</li>
+        <li>Stage-skipping pipeline &mdash; each stage checks for its own output, so an interrupted
+            run resumes and an already-trained 3DGS model can be reused with
+            <code>--gs_model</code> to add only the feature field.</li>
+        <li>Runs on a single <b>RTX 4080 (16 GB)</b>, with explicit VRAM/speed levers
+            (feature-render resolution, gradient checkpointing, cheaper SAM backbones) rather than a
+            single fixed configuration.</li>
+        <li>Auto-numbered output directories, so re-running a scene never overwrites an earlier
+            result &mdash; the same discipline the evaluation harnesses here rely on.</li>
+      </ul>
+    </div>
+
+
+    <!-- ============ FSV ============ -->
+    <div class="project">
+      <div class="project-header">
+        <h3 class="title is-4">FSV &mdash; A Free-Space Violation Metric for Gaussian Splatting</h3>
+        <span class="chip chip-done">evaluation harness</span>
+      </div>
+      <p class="project-role">Sole developer · metric definition, teacher-mask caching, multi-method harness</p>
+
+      <div class="content has-text-justified">
+        <p>
+          Floater removal is genuinely hard to evaluate, because the standard metrics are close to blind
+          to it. Floaters occupy few pixels, so PSNR barely moves; a method can remove every artifact in
+          a scene and show almost nothing for it in the headline number. That makes it easy to publish
+          floater work that is not actually removing floaters &mdash; and easy to fool yourself in the
+          process.
+        </p>
+        <p>
+          FSV measures the thing directly: <b>mean accumulated opacity inside high-confidence free-space
+          pixels</b>. Density where there should be none. Free-space masks come from Mask2Former ADE20K
+          labels with a deliberately conservative class set &mdash; sky, sea, river, lake &mdash;
+          regions where a false positive is nearly impossible, and the masks are cached once so that
+          every method under comparison is scored against a byte-identical mask rather than a
+          re-derived one. Where a renderer does not return alpha directly, each view is rendered twice
+          on black and white backgrounds to recover it, so the metric never requires modifying anyone's
+          rasterizer.
+        </p>
+        <p>
+          The design constraint throughout is <b>independence</b>. A method that scores its own risk
+          estimate against its own internal state proves nothing at all. FSV is external by
+          construction, which is what lets it serve as a check that a reliability signal corresponds to
+          something real in the world.
+        </p>
+      </div>
+
+      <ul class="keyfacts">
+        <li>Runs a shared harness across 3DGS, AbsGS, Pixel-GS, DeSplat, FastGS, taming-3dgs, clean-gs,
+            and our own methods, emitting per-view CSV, summary JSON, and optional alpha / free-mask
+            visualizations.</li>
+        <li>Teacher masks are cached under a single directory, so adding a method to the comparison
+            cannot silently change the evaluation for the others.</li>
+        <li>Complements the external floater metrics used in TIDI-GS &mdash; multi-view depth
+            reprojection error and free-space opacity &mdash; which serve the same purpose from a
+            geometric rather than semantic direction.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/sooyeunYang0116">
+        <i class="fab fa-github"></i>
+      </a>
+      <a class="icon-link" href="mailto:sooyeun.yang@stonybrook.edu">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            Sooyeun Yang &mdash; Department of Mechanical Engineering,
+            SUNY Korea / Stony Brook University.
+          </p>
+          <p class="is-size-7">
+            Page template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>,
+            used under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
